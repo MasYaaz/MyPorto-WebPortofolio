@@ -23,7 +23,7 @@
   import { onMount, tick, onDestroy } from "svelte";
   import { slide } from "svelte/transition";
   import DataProfil from "./lib/DataProfil.svelte";
-  import { icon } from "@fortawesome/fontawesome-svg-core";
+  import Sertifikat from "./lib/Sertifikat.svelte";
 
   let halamanAktif = "section_1";
   let menuTerbuka = false;
@@ -72,12 +72,14 @@
   const navItems = [
     { id: "section_1", label: "Home", icon: faHome },
     { id: "section_2", label: "About Me", icon: faUser },
-    { id: "section_3", label: "My Skills", icon:faPenFancy},
+    { id: "section_3", label: "My Skills", icon: faPenFancy },
     { id: "section_4", label: "Portofolio", icon: faBriefcase },
   ];
 
   function handleScroll() {
     const posisi = window.scrollY + 100; // tambahkan offset bila ada navbar
+    const tinggiHalaman = document.documentElement.scrollHeight;
+    const tinggiViewport = window.innerHeight;
 
     const section1 = document.getElementById("section_1");
     const section2 = document.getElementById("section_2");
@@ -89,7 +91,10 @@
     const batas3 = section3?.offsetTop ?? 0;
     const batas4 = section4?.offsetTop ?? 0;
 
-    if (posisi >= batas4) {
+    // Jika sudah mencapai paling bawah halaman, pasti footer
+    const sudahDiBawah = window.scrollY + tinggiViewport >= tinggiHalaman - 5;
+
+    if (sudahDiBawah || posisi >= batas4) {
       halamanAktif = "section_4";
     } else if (posisi >= batas3) {
       halamanAktif = "section_3";
@@ -165,6 +170,14 @@
     });
   });
 
+  // Fungsi scroll tanpa href dan merubah url
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+
   onDestroy(() => {
     if (observer) {
       observer.disconnect();
@@ -172,9 +185,9 @@
   });
 </script>
 
-<header >
+<header>
   <div
-    class="fixed w-full top-0 z-50 px-6 md:px-10 lg:px-24 xl:px-32 h-14 md:h-16 2xl:h-20 flex bg-secondary shadow-lg justify-between"
+    class="fixed w-screen top-0 z-50 px-6 md:px-10 lg:px-24 xl:px-32 h-14 md:h-16 2xl:h-20 flex bg-secondary shadow-lg justify-between"
   >
     <div class="basis-1/3 flex items-center">
       <img
@@ -208,29 +221,30 @@
     <!-- Ini Navbar dekstop -->
     <nav class="hidden md:flex basis-2/3 p-2 items-center justify-end">
       {#each navItems as item}
-        <a
-          href={"#" + item.id}
-          class="font-primary text-center mr-4 pb-1 text-[13px] md:text-[15px] lg:mr-10 w-25 tracking-[1px] text-primary hover:text-green border-b-1 hover:scale-105 transition-transform duration-75"
+        <button
+          on:click={() => scrollToSection(item.id)}
+          class="font-primary text-center mr-4 pb-1 text-[13px] md:text-[15px] lg:mr-10 w-25 tracking-[1px] text-primary hover:text-green border-b-1 hover:scale-105 hover:cursor-pointer transition-transform duration-75"
           class:border-primary={halamanAktif === item.id}
-          class:scale-110={halamanAktif === item.id}
+          class:scale-105={halamanAktif === item.id}
           class:border-transparent={halamanAktif !== item.id}
         >
           {item.label}
-        </a>
+        </button>
       {/each}
     </nav>
     <!-- Menu Mobile -->
     {#if menuTerbuka}
       <nav
         transition:slide={{ duration: 400 }}
-        class="absolute right-0 top-12 w-full bg-secondary/90 px-4 pb-4 shadow-md md:hidden"
+        class="absolute right-0 top-12 w-screen bg-secondary/90 px-4 pb-4 shadow-md md:hidden"
       >
         {#each navItems as item}
-          <a
-            href={"#" + item.id}
-            class="font-primary text-left flex border-b text-primary p-2 justify-center"
-            ><FontAwesomeIcon icon={item.icon} class="text-lg mr-2"/> {item.label}</a
-          >
+          <button
+            on:click={() => scrollToSection(item.id)}
+            class="font-primary text-left flex w-full border-b text-primary p-2 justify-center hover:cursor-pointer"
+            ><FontAwesomeIcon icon={item.icon} class="text-lg mr-2" />
+            {item.label}
+          </button>
         {/each}
       </nav>
     {/if}
@@ -318,7 +332,7 @@
     </div>
 
     <!-- KANAN: Konten -->
-    <div class="w-full text-secondary space-y-8 xl:h-full">
+    <div class="w-full text-secondary space-y-8 lg:h-full">
       <!-- Tentang Saya -->
       <div
         bind:this={card1Section2R}
@@ -326,7 +340,7 @@
         class:opacity-0={!card1Section2T}
         class:translate-x-0={card1Section2T}
         class:opacity-100={card1Section2T}
-        class="bg-brown shadow-xl p-6 rounded-2xl transition-all duration-700 ease-out transform xl:h-1/2"
+        class="bg-brown shadow-xl p-6 rounded-2xl transition-all duration-700 ease-out transform"
       >
         <h2
           class="font-primary text-2xl md:text-3xl lg:text-4xl font-bold uppercase mb-4 text-center md:text-left"
@@ -371,7 +385,7 @@
 
   <!-- Section 3 -->
   <section
-    class="w-full min-h-screen bg-secondary px-6 md:px-16 lg:px-32 py-16 flex flex-col items-center gap-8 md:pt-30"
+    class="w-full min-h-screen bg-secondary px-6 md:px-16 lg:px-32 py-16 flex flex-col items-center justify-center gap-8 md:pt-30"
     id="section_3"
   >
     <div
@@ -389,9 +403,8 @@
       </h2>
     </div>
     <div
-      class="flex flex-wrap 2xl:flex-nowrap justify-center gap-10 px-4 items-stretch"
+      class="w-full flex flex-col items-center xl:flex-row lg:flex-wrap xl:flex-nowrap justify-center gap-10 px-4 xl:items-stretch"
     >
-      <!-- Kartu 1 -->
       <div
         bind:this={card2Section3R}
         class:-translate-x-24={!card2Section3T}
@@ -412,7 +425,7 @@
           WEB Development
         </h2>
         <div
-          class="w-fit md:mt-1 md:w-80 bg-brown p-6 rounded-2xl shadow-light shadow-2xl/25 flex flex-col justify-between flex-1 h-full"
+          class="w-full bg-brown p-6 rounded-2xl shadow-light shadow-2xl/25 flex flex-col justify-between flex-1 h-full"
         >
           <p
             class="font-display break-words w-full text-dark2 text-sm md:text-sm lg:text-md xl:text-lg 2xl:text-xl"
@@ -430,7 +443,6 @@
         </div>
       </div>
 
-      <!-- Kartu 2 -->
       <div
         bind:this={card3Section3R}
         class:-translate-x-24={!card3Section3T}
@@ -451,7 +463,7 @@
           Desain Grafis
         </h2>
         <div
-          class="w-fit md:w-80 bg-brown p-6 rounded-2xl shadow-light shadow-2xl/25 flex flex-col justify-between flex-1 h-full"
+          class="w-full bg-brown p-6 rounded-2xl shadow-light shadow-2xl/25 flex flex-col justify-between flex-1 h-full"
         >
           <p
             class="break-words w-full font-display text-dark2 text-sm md:text-sm lg:text-md xl:text-lg 2xl:text-xl"
@@ -468,7 +480,6 @@
         </div>
       </div>
 
-      <!-- Kartu 3 -->
       <div
         bind:this={card4Section3R}
         class:-translate-x-24={!card4Section3T}
@@ -489,7 +500,7 @@
           Fotografi
         </h2>
         <div
-          class="w-fit md:w-80 bg-brown p-6 rounded-2xl shadow-light shadow-2xl/25 flex flex-col justify-between flex-1 h-full"
+          class="w-full bg-brown p-6 rounded-2xl shadow-light shadow-2xl/25 flex flex-col justify-between flex-1 h-full"
         >
           <p
             class="break-words w-full font-display text-dark2 text-sm md:text-sm lg:text-md xl:text-lg 2xl:text-xl"
@@ -509,9 +520,12 @@
     </div>
   </section>
 
+  <!-- Section Sertifikat -->
+  <Sertifikat />
+
   <!-- Section 4 -->
   <section
-    class="w-full min-h-screen bg-secondary px-6 md:px-16 lg:px-32 py-20 flex flex-col items-center gap-8 md:pt-30 z-30"
+    class="w-full min-h-screen bg-secondary px-6 md:px-16 lg:px-32 py-20 flex flex-col items-center justify-around gap-8 md:pt-30 z-30"
     id="section_4"
   >
     <div
@@ -529,7 +543,7 @@
       </h2>
     </div>
     <div
-      class="flex gap-20 flex-col md:flex-row 2xl:flex-nowrap justify-center md:gap-30 px-4 items-stretch"
+      class="flex gap-20 flex-col md:flex-row 2xl:flex-nowrap justify-center md:gap-30 px-4 items-center"
     >
       <!-- Kartu 1 -->
       <div
@@ -545,18 +559,21 @@
           target="_blank"
           aria-label="Github"
         >
-          <FontAwesomeIcon icon={faGithub} class="text-[220px]"/>
+          <FontAwesomeIcon
+            icon={faGithub}
+            class="text-[160px] lg:text-[220px] hover:scale-115 duration-700"
+          />
         </a>
       </div>
 
       <!-- Kartu 2 -->
       <div
         bind:this={card3Section4R}
-        class:-translate-x-24={!card3Section4T}
+        class:translate-x-24={!card3Section4T}
         class:opacity-0={!card3Section4T}
         class:translate-x-0={card3Section4T}
         class:opacity-100={card3Section4T}
-        class="w-full md:w-1/2 transition-all duration-700 ease-out transform"
+        class="w-fit md:w-1/2 transition-all duration-700 ease-out transform"
       >
         <a
           href="https://www.shutterstock.com/g/MasYaaz"
@@ -567,7 +584,7 @@
             loading="lazy"
             alt="Shutterstock"
             src="./images/shutterstock.svg"
-            class="w-60 h-fit p-4 md:mb-3 hover:scale-115 transition-transform duration-300"
+            class="w-45 lg:w-60 h-fit p-4 md:mb-3 hover:scale-115 transition-transform duration-300"
           />
         </a>
       </div>
