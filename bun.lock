@@ -4,7 +4,7 @@
     "": {
       "name": "myporto-webportofolio",
       "dependencies": {
-        "@fontsource/montserrat": "^5.2.5",
+        "@fontsource/montserrat": "^5.2.8",
         "@fontsource/montserrat-alternates": "^5.2.5",
         "@fortawesome/fontawesome-svg-core": "^6.7.2",
         "@fortawesome/free-brands-svg-icons": "^6.7.2",
@@ -75,7 +75,7 @@
 
     "@esbuild/win32-x64": ["@esbuild/win32-x64@0.25.4", "", { "os": "win32", "cpu": "x64" }, "sha512-nOT2vZNw6hJ+z43oP1SPea/G/6AbN6X+bGNhNuq8NtRHy4wsMhw765IKLNmnjek7GvjWBYQ8Q5VBoYTFg9y1UQ=="],
 
-    "@fontsource/montserrat": ["@fontsource/montserrat@5.2.5", "", {}, "sha512-/OA+bdg1yqUArDUnEeCqDwgTDiIpvED56TxYskje8UKpsvjl/0A9eNod7IcdHz6/Osi70vo7briRO3la8/u+5Q=="],
+    "@fontsource/montserrat": ["@fontsource/montserrat@5.2.8", "", {}, "sha512-xTjLxSbSfCycDB0pwmNsfNvdfWPaDaRQ2LC6yt/ZI7SdvXG52zHnzNYC/09mzuAuWNJyShkteutfCoDgym56hQ=="],
 
     "@fontsource/montserrat-alternates": ["@fontsource/montserrat-alternates@5.2.5", "", {}, "sha512-0RVcZHRGclRCiDXKTVdwKay3SsARswGaaW3bdiAuyWChndGM+s/DpPEUPg3WaMKdeEeqzKKw31JvWeAQZsHa5Q=="],
 

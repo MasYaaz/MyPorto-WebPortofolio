@@ -14,6 +14,7 @@
     faPhone,
     faUser,
     faSearch,
+    faCameraRetro,
   } from "@fortawesome/free-solid-svg-icons";
   import { onMount, onDestroy } from "svelte";
   import { slide } from "svelte/transition";
@@ -27,9 +28,12 @@
   import { handleScroll } from "./lib/utils/scrollHandler";
   import Navbar from "./lib/component/Navbar.svelte";
   import { navItemsBawah } from "./lib/store/sectionRefs";
-  import { halamanAktif, showNavbar } from "./lib/store/ui";
-  import { navbarLight } from "./lib/store/ui";
-  let menuTerbuka = false;
+  import {
+    halamanAktif,
+    navbarLight,
+    menuTerbuka,
+    toggleMenu,
+  } from "./lib/store/ui";
 
   const profilItems = [
     {
@@ -49,12 +53,29 @@
       tulisan: "+62-823-3304-4295",
     },
   ];
+
+  const mySkill = [
+    {
+      logo: faGlobe,
+      judul: "Web Development",
+      deskripsi:
+        "Butuh website buat jualan online, atau website untuk admin kantor? Saya dapat membuatnya dengan menggunakan HTML, CSS dan juga Javascript. Dijamin responsif bisa dibuka di mana saja.",
+    },
+    {
+      logo: faObjectUngroup,
+      judul: "Desain Grafis",
+      deskripsi:
+        "Butuh website buat jualan online, atau website untuk admin kantor? Saya dapat membuatnya dengan menggunakan HTML, CSS dan juga Javascript. Dijamin responsif bisa dibuka di mana saja.",
+    },
+    {
+      logo: faCameraRetro,
+      judul: "Fotografi",
+      deskripsi:
+        "Butuh website buat jualan online, atau website untuk admin kantor? Saya dapat membuatnya dengan menggunakan HTML, CSS dan juga Javascript. Dijamin responsif bisa dibuka di mana saja.",
+    },
+  ];
   // Observer
   let observer;
-
-  function toggleMenu() {
-    menuTerbuka = !menuTerbuka;
-  }
 
   onMount(() => {
     window.addEventListener("scroll", handleScroll);
@@ -92,7 +113,7 @@
     <div
       class={`w-full justify-center absolute top-0 z-50 px-8 md:px-20 xl:px-30 h-10 md:h-16 2xl:h-18 flex`}
     >
-      <div class="w-full lg:max-w-7xl flex mt-5">
+      <div class="w-full justify-between lg:max-w-5xl flex mt-5">
         <!-- Logo -->
         <div class="basis-1/3 flex items-center">
           <img
@@ -125,7 +146,7 @@
           aria-label="tombol navbar"
         >
           <svg
-            class={`w-6 h-6 ${$navbarLight ? "text-gray-900" : "text-white"}`}
+            class={`w-6 h-6 ${$navbarLight ? "text-secondary" : "text-primary"}`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -140,7 +161,7 @@
         </button>
 
         <!-- Mobile Menu -->
-        {#if !menuTerbuka}
+        {#if !$menuTerbuka}
           <nav
             transition:slide={{ duration: 400 }}
             class="fixed inset-0 z-40 flex flex-col items-center justify-center bg-gray-900/50 backdrop-blur-sm 2xl:hidden"
@@ -250,7 +271,7 @@
           class="bg-brown shadow-xl p-6 rounded-2xl transition-all duration-700 ease-out transform"
         >
           <h2
-            class="font-primary text-2xl md:text-3xl lg:text-4xl font-bold uppercase mb-4 text-center md:text-left"
+            class="font-primary text-2xl md:text-3xl lg:text-4xl font-semibold uppercase mb-4 text-center md:text-left"
           >
             Tentang Saya
           </h2>
@@ -314,118 +335,43 @@
       <div
         class="w-full flex flex-col items-center xl:flex-row lg:flex-wrap xl:flex-nowrap justify-center gap-10 px-4 xl:items-stretch"
       >
-        <div
-          bind:this={refs["card2Section3R"]}
-          class:-translate-x-24={!visibleFlags["card2Section3R"]}
-          class:opacity-0={!visibleFlags["card2Section3R"]}
-          class:translate-x-0={visibleFlags["card2Section3R"]}
-          class:opacity-100={visibleFlags["card2Section3R"]}
-          class="w-full lg:w-1/3 mb-6 flex flex-col items-center text-center transition-all duration-700 ease-out transform"
-        >
-          <button>
-            <FontAwesomeIcon
-              icon={faGlobe}
-              class="text-brown fa-5x md:fa-3x md:mb-3 hover:scale-115 transition-transform duration-300"
-            />
-          </button>
-          <h2
-            class="font-primary break-words w-full font-bold text-light p-2 text-2xl md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl"
-          >
-            WEB Development
-          </h2>
+        {#each mySkill as S}
           <div
-            class="w-full bg-brown p-6 rounded-2xl shadow-light shadow-2xl/25 flex flex-col justify-between flex-1 h-full"
+            bind:this={refs["card2Section3R"]}
+            class:-translate-x-24={!visibleFlags["card2Section3R"]}
+            class:opacity-0={!visibleFlags["card2Section3R"]}
+            class:translate-x-0={visibleFlags["card2Section3R"]}
+            class:opacity-100={visibleFlags["card2Section3R"]}
+            class="w-full lg:w-1/3 mb-6 flex flex-col items-center text-center transition-all duration-700 ease-out transform"
           >
-            <p
-              class="font-display break-words w-full text-dark2 text-sm md:text-sm lg:text-md xl:text-lg 2xl:text-xl"
-            >
-              Butuh website buat jualan online, atau website untuk admin kantor?
-              Saya dapat membuatnya dengan menggunakan HTML, CSS dan juga
-              Javascript. Dijamin responsif bisa dibuka di mana saja.
-            </p>
-            <hr class="border-t-3 mt-5 border-dark2" />
-            <button
-              class="mt-4 self-center text-dark2 hover:cursor-pointer hover:text-dark hover:scale-105 transition-all duration-300"
-            >
-              <FontAwesomeIcon icon={faSearch} class="fa-2x" />
+            <button>
+              <FontAwesomeIcon
+                icon={S.logo}
+                class="text-brown fa-5x md:fa-3x md:mb-3 hover:scale-115 transition-transform duration-300"
+              />
             </button>
+            <h2
+              class="font-primary break-words w-full h-20 items-center flex justify-center font-bold text-light p-2 text-2xl md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl"
+            >
+              {S.judul}
+            </h2>
+            <div
+              class="w-full bg-brown p-6 rounded-2xl shadow-light shadow-2xl/25 flex flex-col justify-between flex-1 h-full"
+            >
+              <p
+                class="font-display break-words w-full text-dark2 text-sm md:text-sm lg:text-md xl:text-lg 2xl:text-xl"
+              >
+                {S.deskripsi}
+              </p>
+              <hr class="border-t-3 mt-5 border-dark2" />
+              <button
+                class="mt-4 self-center text-dark2 hover:cursor-pointer hover:text-dark hover:scale-105 transition-all duration-300"
+              >
+                <FontAwesomeIcon icon={faSearch} class="fa-2x" />
+              </button>
+            </div>
           </div>
-        </div>
-
-        <div
-          bind:this={refs["card3Section3R"]}
-          class:-translate-x-24={!visibleFlags["card3Section3R"]}
-          class:opacity-0={!visibleFlags["card3Section3R"]}
-          class:translate-x-0={visibleFlags["card3Section3R"]}
-          class:opacity-100={visibleFlags["card3Section3R"]}
-          class="w-full lg:w-1/3 mb-6 flex flex-col items-center text-center transition-all duration-700 ease-out transform"
-        >
-          <button>
-            <FontAwesomeIcon
-              icon={faObjectUngroup}
-              class="text-brown fa-5x md:fa-3x md:mb-3 hover:scale-115 transition-transform duration-300"
-            />
-          </button>
-          <h2
-            class="font-primary break-words w-full font-bold text-light p-2 text-2xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl"
-          >
-            Desain Grafis
-          </h2>
-          <div
-            class="w-full bg-brown p-6 rounded-2xl shadow-light shadow-2xl/25 flex flex-col justify-between flex-1 h-full"
-          >
-            <p
-              class="break-words w-full font-display text-dark2 text-sm md:text-sm lg:text-md xl:text-lg 2xl:text-xl"
-            >
-              Butuh desain yang menarik dan cepat? Saya dapat mewujudkannya
-              dengan menggunakan CorelDraw dan juga Photoshop.
-            </p>
-            <hr class="border-t-3 mt-16 border-dark2" />
-            <button
-              class="mt-4 self-center text-dark2 hover:cursor-pointer hover:text-dark hover:scale-105 transition-all duration-300"
-            >
-              <FontAwesomeIcon icon={faSearch} class="fa-2x" />
-            </button>
-          </div>
-        </div>
-
-        <div
-          bind:this={refs["card4Section3R"]}
-          class:-translate-x-24={!visibleFlags["card4Section3R"]}
-          class:opacity-0={!visibleFlags["card4Section3R"]}
-          class:translate-x-0={visibleFlags["card4Section3R"]}
-          class:opacity-100={visibleFlags["card4Section3R"]}
-          class="w-full lg:w-1/3 mb-6 flex flex-col items-center text-center transition-all duration-700 ease-out transform"
-        >
-          <button>
-            <FontAwesomeIcon
-              icon={faCameraAlt}
-              class="text-brown fa-5x md:fa-3x md:mb-3 hover:scale-115 transition-transform duration-300"
-            />
-          </button>
-          <h2
-            class="font-primary break-words w-full font-bold text-light p-2 text-2xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl"
-          >
-            Fotografi
-          </h2>
-          <div
-            class="w-full bg-brown p-6 rounded-2xl shadow-light shadow-2xl/25 flex flex-col justify-between flex-1 h-full"
-          >
-            <p
-              class="break-words w-full font-display text-dark2 text-sm md:text-sm lg:text-md xl:text-lg 2xl:text-xl"
-            >
-              Punya acara tapi tidak punya fotografer? Kamilah solusinya. Dengan
-              lebih dari 100 portofolio, bisa dipastikan kami memiliki
-              pengalaman banyak dalam bidang ini.
-            </p>
-            <hr class="border-t-3 mt-8 border-dark2" />
-            <button
-              class="mt-4 self-center text-dark2 hover:cursor-pointer hover:text-dark hover:scale-105 transition-all duration-300"
-            >
-              <FontAwesomeIcon icon={faSearch} class="fa-2x" />
-            </button>
-          </div>
-        </div>
+        {/each}
       </div>
     </div>
   </section>

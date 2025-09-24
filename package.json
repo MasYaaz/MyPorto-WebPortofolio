@@ -18,7 +18,7 @@
     "vite-plugin-static-copy": "^3.0.0"
   },
   "dependencies": {
-    "@fontsource/montserrat": "^5.2.5",
+    "@fontsource/montserrat": "^5.2.8",
     "@fontsource/montserrat-alternates": "^5.2.5",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
