@@ -66,7 +66,7 @@
     <div
       class={`w-full justify-center absolute top-0 z-50 px-8 md:px-20 xl:px-30 h-10 md:h-16 2xl:h-18 flex`}
     >
-      <div class="w-full justify-between lg:max-w-7xl flex mt-5">
+      <div class="w-full justify-between lg:max-w-8xl flex mt-5">
         <!-- Logo -->
         <div class="basis-1/3 flex items-center">
           <img
@@ -82,7 +82,7 @@
           {#each navItems as item}
             <button
               onclick={() => scrollToSection(item.id)}
-              class={`font-primary text-center mr-4 pb-1 text-[13px] lg:text-[17px] lg:mr-10 w-30 tracking-[1px] hover:cursor-pointer hover:text-light border-b-2 hover:scale-105 transition-transform duration-75 ${$navbarLight ? "text-secondary" : "text-primary"}`}
+              class={`font-primary font-medium text-center mr-4 pb-1 text-[13px] lg:text-[17px] lg:mr-10 w-30 tracking-[1px] hover:cursor-pointer hover:text-light border-b-2 hover:scale-105 transition-transform duration-75 ${$navbarLight ? "text-secondary" : "text-primary"}`}
               class:border-secondary={$halamanAktif === item.id}
               class:scale-110={$halamanAktif === item.id}
               class:border-transparent={$halamanAktif !== item.id}
@@ -197,14 +197,14 @@
     class="w-full min-h-screen bg-secondary px-6 md:px-10 lg:px-24 xl:px-32 py-16 md:py-20 lg:py-24 flex flex-col xl:flex-row items-center justify-center gap-10 md:gap-16"
     id="section_2"
   >
-    <div class="lg:max-w-6xl gap-5 flex flex-col">
+    <div class="lg:max-w-6xl gap-5 flex flex-col md:flex-row">
       <!-- KIRI: Gambar -->
       <div class="flex flex-col gap-6 w-full">
         <img
-          src="./images/foto-personal.jpg"
+          src="./images/personal.webp"
           alt="Foto Personal"
           bind:this={refs["aboutRef"]}
-          class="w-full aspect-square object-cover rounded-3xl shadow-xl transition-all duration-700 ease-out transform h-100 lg:h-full"
+          class="w-full aspect-square object-cover rounded-3xl shadow-xl transition-all duration-700 ease-out transform h-100 md:h-full"
           class:-translate-x-24={!visibleFlags["aboutRef"]}
           class:opacity-0={!visibleFlags["aboutRef"]}
           class:translate-x-0={visibleFlags["aboutRef"]}
@@ -270,7 +270,7 @@
     class="w-full min-h-screen bg-secondary px-6 md:px-16 lg:px-32 py-16 flex flex-col items-center justify-center gap-8 md:pt-30"
     id="section_3"
   >
-    <div class="lg:max-w-6xl flex flex-col items-center">
+    <div class="max-w-lg lg:max-w-6xl flex flex-col items-center">
       <div
         bind:this={refs["card1Section3R"]}
         class:-translate-x-24={!visibleFlags["card1Section3R"]}
@@ -348,7 +348,7 @@
     class="w-full min-h-screen bg-secondary px-6 md:px-16 lg:px-32 py-20 flex flex-col items-center justify-around gap-8 md:pt-30 z-30"
     id="section_4"
   >
-    <div class="lg:max-w-4xl">
+    <div class="max-w-lg lg:max-w-4xl flex flex-col items-center">
       <div
         bind:this={refs["card1Section4R"]}
         class:-translate-x-24={!visibleFlags["card1Section4R"]}

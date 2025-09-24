@@ -15,9 +15,9 @@
   {#if $showNavbar}
     <div
       transition:slide={{ duration: 300 }}
-      class={`w-[92%] md:w-[90%] transition-all ease-in duration-200 shadow-xl/50 rounded-bl-xl rounded-tr-xl rounded-md mt-2 fixed top-0 z-50 px-8 md:px-20 xl:px-30 h-12 md:h-16 2xl:h-18 flex bg-primary justify-between ${$navbarLight ? "bg-white/90" : "bg-gray-900/90"}`}
+      class={`w-[92%] md:w-[95%] transition-all ease-in duration-200 shadow-xl/50 rounded-bl-xl rounded-tr-xl rounded-md justify-center mt-2 fixed top-0 z-50 px-8 md:px-20 xl:px-30 h-12 md:h-16 2xl:h-18 flex bg-primary ${$navbarLight ? "bg-white/90" : "bg-gray-900/90"}`}
     >
-      <div class="w-full justify-between lg:max-w-7xl flex">
+      <div class="w-full justify-between lg:max-w-8xl flex">
         <!-- Logo -->
         <div class="basis-1/3 flex items-center">
           <img
