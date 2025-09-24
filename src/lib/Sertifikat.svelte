@@ -45,7 +45,8 @@
   }
 
   function prevSlide() {
-    let newIndex = (currentIndex - 1 + certificateImages.length) % certificateImages.length;
+    let newIndex =
+      (currentIndex - 1 + certificateImages.length) % certificateImages.length;
     updateSlide(newIndex);
   }
 
@@ -60,26 +61,34 @@
   }
 
   onMount(() => {
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
   });
 
   onDestroy(() => {
-    window.removeEventListener('keydown', handleKeyDown);
+    window.removeEventListener("keydown", handleKeyDown);
   });
 </script>
 
 <section id="slide-sertifikat" class="py-12 bg-secondary">
   <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Sertifikat Saya</h2>
+    <h2
+      class="text-3xl lg:text-5xl font-primary font-bold text-center mb-8 text-primary"
+    >
+      Sertifikat Saya
+    </h2>
 
     {#if certificateImages && certificateImages.length > 0}
-      <div class="relative rounded-lg shadow-lg overflow-hidden max-w-3xl mx-auto border border-gray-200">
+      <div
+        class="relative rounded-lg shadow-lg overflow-hidden max-w-3xl mx-auto"
+      >
         <div
           class="flex w-full h-full"
           style="transform: translateX({$translateX}%);"
         >
           {#each certificateImages as imagePath, i (imagePath)}
-            <div class="flex-shrink-0 w-full h-full flex items-center justify-center">
+            <div
+              class="flex-shrink-0 w-full h-full flex items-center justify-center"
+            >
               <img
                 src={imagePath}
                 alt={`Sertifikat ${i + 1} dari ${certificateImages.length}`}
@@ -91,9 +100,11 @@
         </div>
 
         {#if certificateImages.length > 1}
-          <div class="absolute top-1/2 transform -translate-y-1/2 w-full flex justify-between items-center px-4 z-10">
+          <div
+            class="absolute top-1/2 transform -translate-y-1/2 w-full flex justify-between items-center px-4 z-10"
+          >
             <button
-              class="bg-gray-700 bg-opacity-50 hover:bg-opacity-75 text-white font-bold py-2 px-3 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+              class="bg-primary bg-opacity-50 hover:bg-opacity-75 text-secondary font-bold py-2 px-3 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
               on:click={prevSlide}
               disabled={isAnimating}
               aria-label="Previous slide"
@@ -101,7 +112,7 @@
               &larr;
             </button>
             <button
-              class="bg-gray-700 bg-opacity-50 hover:bg-opacity-75 text-white font-bold py-2 px-3 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+              class="bg-primary bg-opacity-50 hover:bg-opacity-75 text-secondary font-bold py-2 px-3 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
               on:click={nextSlide}
               disabled={isAnimating}
               aria-label="Next slide"
@@ -110,13 +121,17 @@
             </button>
           </div>
 
-          <div class="absolute bottom-0 left-0 w-full bg-gray-900 bg-opacity-60 text-white text-center py-2 text-sm font-medium z-10">
+          <div
+            class="absolute bottom-0 left-0 w-full bg-primary bg-opacity-60 text-secondary text-center py-2 text-sm font-medium z-10"
+          >
             {currentIndex + 1} / {certificateImages.length}
           </div>
         {/if}
       </div>
     {:else}
-      <p class="text-center text-gray-600 italic">Tidak ada foto sertifikat untuk ditampilkan saat ini.</p>
+      <p class="text-center text-gray-600 italic">
+        Tidak ada foto sertifikat untuk ditampilkan saat ini.
+      </p>
     {/if}
   </div>
 </section>

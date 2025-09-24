@@ -6,24 +6,13 @@
     faInstagram,
     faLinkedin,
   } from "@fortawesome/free-brands-svg-icons";
-  import {
-    faCameraAlt,
-    faEnvelope,
-    faGlobe,
-    faObjectUngroup,
-    faPhone,
-    faUser,
-    faSearch,
-    faCameraRetro,
-  } from "@fortawesome/free-solid-svg-icons";
+  import { faSearch } from "@fortawesome/free-solid-svg-icons";
   import { onMount, onDestroy } from "svelte";
   import { slide } from "svelte/transition";
   import DataProfil from "./lib/DataProfil.svelte";
   import Sertifikat from "./lib/Sertifikat.svelte";
   import { navItems } from "./lib/store/navItems";
-  import { refs } from "./lib/store/sectionRefs";
-  import { ids } from "./lib/store/sectionRefs";
-  import { visibleFlags } from "./lib/store/sectionRefs";
+  import { refs, ids, visibleFlags } from "./lib/store/sectionRefs";
   import { scrollToSection } from "./lib/utils/scrollTo";
   import { handleScroll } from "./lib/utils/scrollHandler";
   import Navbar from "./lib/component/Navbar.svelte";
@@ -34,46 +23,8 @@
     menuTerbuka,
     toggleMenu,
   } from "./lib/store/ui";
+  import { mySkill, profilItems } from "./lib/store/array";
 
-  const profilItems = [
-    {
-      icon: faUser,
-      tulisan: "Aflah Mahdi Yazdi",
-    },
-    {
-      icon: faCameraAlt,
-      tulisan: "22 Desember 2005",
-    },
-    {
-      icon: faEnvelope,
-      tulisan: "Diyaz.hal22@gmail.com",
-    },
-    {
-      icon: faPhone,
-      tulisan: "+62-823-3304-4295",
-    },
-  ];
-
-  const mySkill = [
-    {
-      logo: faGlobe,
-      judul: "Web Development",
-      deskripsi:
-        "Butuh website buat jualan online, atau website untuk admin kantor? Saya dapat membuatnya dengan menggunakan HTML, CSS dan juga Javascript. Dijamin responsif bisa dibuka di mana saja.",
-    },
-    {
-      logo: faObjectUngroup,
-      judul: "Desain Grafis",
-      deskripsi:
-        "Butuh website buat jualan online, atau website untuk admin kantor? Saya dapat membuatnya dengan menggunakan HTML, CSS dan juga Javascript. Dijamin responsif bisa dibuka di mana saja.",
-    },
-    {
-      logo: faCameraRetro,
-      judul: "Fotografi",
-      deskripsi:
-        "Butuh website buat jualan online, atau website untuk admin kantor? Saya dapat membuatnya dengan menggunakan HTML, CSS dan juga Javascript. Dijamin responsif bisa dibuka di mana saja.",
-    },
-  ];
   // Observer
   let observer;
 
@@ -90,7 +41,7 @@
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0 }
     );
     ids.forEach((id) => {
       const el = refs[id];
@@ -102,6 +53,11 @@
     if (observer) {
       observer.disconnect();
     }
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect(); // bersihkan observer juga
+    };
   });
 </script>
 
@@ -113,7 +69,7 @@
     <div
       class={`w-full justify-center absolute top-0 z-50 px-8 md:px-20 xl:px-30 h-10 md:h-16 2xl:h-18 flex`}
     >
-      <div class="w-full justify-between lg:max-w-5xl flex mt-5">
+      <div class="w-full justify-between lg:max-w-7xl flex mt-5">
         <!-- Logo -->
         <div class="basis-1/3 flex items-center">
           <img
@@ -141,7 +97,7 @@
 
         <!-- Hamburger -->
         <button
-          class="2xl:hidden"
+          class="2xl:hidden hover:scale-105 transition-transform"
           onclick={toggleMenu}
           aria-label="tombol navbar"
         >
@@ -161,10 +117,10 @@
         </button>
 
         <!-- Mobile Menu -->
-        {#if !$menuTerbuka}
+        {#if $menuTerbuka}
           <nav
             transition:slide={{ duration: 400 }}
-            class="fixed inset-0 z-40 flex flex-col items-center justify-center bg-gray-900/50 backdrop-blur-sm 2xl:hidden"
+            class="fixed inset-0 z-40 flex flex-col items-center justify-center bg-primary/50 backdrop-blur-sm 2xl:hidden"
           >
             {#each navItems as item}
               <button
@@ -207,7 +163,7 @@
     >
       <h1
         bind:this={refs["gambarRef"]}
-        class="font-primary text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl uppercase font-bold transition-all duration-700 ease-out transform"
+        class="font-primary text-primary text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl uppercase font-bold transition-all duration-700 ease-out transform"
         class:-translate-y-10={!visibleFlags["gambarRef"]}
         class:opacity-0={!visibleFlags["gambarRef"]}
         class:translate-y-15={visibleFlags["gambarRef"]}
@@ -244,7 +200,7 @@
     class="w-full min-h-screen bg-secondary px-6 md:px-10 lg:px-24 xl:px-32 py-16 md:py-20 lg:py-24 flex flex-col xl:flex-row items-center justify-center gap-10 md:gap-16"
     id="section_2"
   >
-    <div class="lg:max-w-4xl gap-5 flex flex-col">
+    <div class="lg:max-w-6xl gap-5 flex flex-col">
       <!-- KIRI: Gambar -->
       <div class="flex flex-col gap-6 w-full">
         <img
@@ -268,7 +224,7 @@
           class:opacity-0={!visibleFlags["card1Section2R"]}
           class:translate-x-0={visibleFlags["card1Section2R"]}
           class:opacity-100={visibleFlags["card1Section2R"]}
-          class="bg-brown shadow-xl p-6 rounded-2xl transition-all duration-700 ease-out transform"
+          class="bg-brown shadow-xl p-6 rounded-2xl transition-all flex flex-col items-center duration-700 ease-out transform"
         >
           <h2
             class="font-primary text-2xl md:text-3xl lg:text-4xl font-semibold uppercase mb-4 text-center md:text-left"
@@ -276,7 +232,7 @@
             Tentang Saya
           </h2>
           <p
-            class="font-display text-sm md:text-sm lg:text-lg xl:text-xl leading-relaxed text-center md:text-justify"
+            class="font-display text-sm md:text-sm lg:text-lg xl:text-xl leading-relaxed text-center"
           >
             Saya seorang Front-End developer yang terbiasa mendesain web dari
             yang sederhana sampai cukup kompleks. Saya juga memiliki pengalaman
@@ -317,17 +273,17 @@
     class="w-full min-h-screen bg-secondary px-6 md:px-16 lg:px-32 py-16 flex flex-col items-center justify-center gap-8 md:pt-30"
     id="section_3"
   >
-    <div class="lg:max-w-4xl flex flex-col items-center">
+    <div class="lg:max-w-6xl flex flex-col items-center">
       <div
         bind:this={refs["card1Section3R"]}
         class:-translate-x-24={!visibleFlags["card1Section3R"]}
         class:opacity-0={!visibleFlags["card1Section3R"]}
         class:translate-x-0={visibleFlags["card1Section3R"]}
         class:opacity-100={visibleFlags["card1Section3R"]}
-        class="bg-brown shadow-light shadow-2xl/20 p-2 md:p-5 mb-10 w-60 md:w-70 lg:w-80 xl:w-100 2xl:w-120 text-center rounded-2xl shadow-xl transition-all duration-700 ease-out transform"
+        class="bg-primary shadow-light shadow-2xl/20 p-2 md:p-5 mb-10 w-60 md:w-70 lg:w-80 xl:w-100 2xl:w-120 text-center rounded-2xl shadow-xl transition-all duration-700 ease-out transform"
       >
         <h2
-          class="font-primary text-3xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-extrabold text-light mb-2"
+          class="font-primary text-secondary text-3xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-extrabold text-light mb-2"
         >
           MY SKILLS
         </h2>
@@ -335,39 +291,39 @@
       <div
         class="w-full flex flex-col items-center xl:flex-row lg:flex-wrap xl:flex-nowrap justify-center gap-10 px-4 xl:items-stretch"
       >
-        {#each mySkill as S}
+        {#each mySkill as S, i}
           <div
-            bind:this={refs["card2Section3R"]}
-            class:-translate-x-24={!visibleFlags["card2Section3R"]}
-            class:opacity-0={!visibleFlags["card2Section3R"]}
-            class:translate-x-0={visibleFlags["card2Section3R"]}
-            class:opacity-100={visibleFlags["card2Section3R"]}
+            bind:this={refs[`cardSection3_${i}`]}
+            class:-translate-x-24={!visibleFlags[`cardSection3_${i}`]}
+            class:opacity-0={!visibleFlags[`cardSection3_${i}`]}
+            class:translate-x-0={visibleFlags[`cardSection3_${i}`]}
+            class:opacity-100={visibleFlags[`cardSection3_${i}`]}
             class="w-full lg:w-1/3 mb-6 flex flex-col items-center text-center transition-all duration-700 ease-out transform"
           >
             <button>
               <FontAwesomeIcon
                 icon={S.logo}
-                class="text-brown fa-5x md:fa-3x md:mb-3 hover:scale-115 transition-transform duration-300"
+                class="text-primary fa-5x md:fa-3x md:mb-3 hover:scale-115 transition-transform duration-300"
               />
             </button>
             <h2
-              class="font-primary break-words w-full h-20 items-center flex justify-center font-bold text-light p-2 text-2xl md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl"
+              class="font-primary break-words w-full h-20 text-primary items-center flex justify-center font-bold text-light p-2 text-2xl md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl"
             >
               {S.judul}
             </h2>
             <div
-              class="w-full bg-brown p-6 rounded-2xl shadow-light shadow-2xl/25 flex flex-col justify-between flex-1 h-full"
+              class="w-full bg-primary p-6 rounded-2xl shadow-xl/60 flex flex-col justify-between flex-1 h-full"
             >
               <p
-                class="font-display break-words w-full text-dark2 text-sm md:text-sm lg:text-md xl:text-lg 2xl:text-xl"
+                class="font-display text-secondary break-words w-full text-dark2 text-sm md:text-sm lg:text-md xl:text-lg 2xl:text-xl"
               >
                 {S.deskripsi}
               </p>
-              <hr class="border-t-3 mt-5 border-dark2" />
+              <hr class="border-t-3 mt-5 border-secondary" />
               <button
                 class="mt-4 self-center text-dark2 hover:cursor-pointer hover:text-dark hover:scale-105 transition-all duration-300"
               >
-                <FontAwesomeIcon icon={faSearch} class="fa-2x" />
+                <FontAwesomeIcon icon={faSearch} class="fa-2x text-secondary" />
               </button>
             </div>
           </div>
@@ -394,7 +350,7 @@
         class="bg-brown shadow-light shadow-2xl/20 p-5 md:p-7 mb-10 w-80 md:w-100 lg:w-120 xl:w-140 2xl:w-160 text-center rounded-2xl shadow-xl transition-all duration-700 ease-out transform"
       >
         <h2
-          class="font-primary text-3xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-black text-light mb-2"
+          class="font-primary text-secondary text-3xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-black text-light mb-2"
         >
           Link Portofolio Saya
         </h2>

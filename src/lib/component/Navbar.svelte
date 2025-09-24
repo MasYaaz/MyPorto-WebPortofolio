@@ -65,7 +65,7 @@
         </button>
 
         <!-- Mobile Menu -->
-        {#if !$menuTerbuka}
+        {#if $menuTerbuka}
           <nav
             transition:slide={{ duration: 400 }}
             class="fixed inset-0 z-40 flex flex-col items-center justify-center bg-gray-900/50 backdrop-blur-sm 2xl:hidden"
