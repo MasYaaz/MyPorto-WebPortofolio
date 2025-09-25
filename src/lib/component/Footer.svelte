@@ -12,7 +12,7 @@
 <footer class="relative w-full text-dark2 font-primary overflow-hidden">
   <!-- Background Image -->
   <div
-    class="absolute inset-0 bg-[url('./images/back.jpg')] bg-cover bg-center"
+    class="absolute inset-0 bg-[url('./images/back.webp')] bg-cover bg-center"
   ></div>
 
   <!-- Overlay Transparan -->

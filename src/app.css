@@ -19,3 +19,9 @@ html {
 * {
   user-select: none !important;
 }
+
+/* Default (light mode) */
+* {
+  scrollbar-width: thin; /* scrollbar ramping */
+  scrollbar-color: #283618 transparent; /* thumb warna abu, track transparan */
+}

@@ -133,7 +133,7 @@
     </div>
   </div>
   <section
-    class="relative w-full flex justify-center items-end overflow-hidden h-screen bg-cover bg-[url('./images/back.jpg')]"
+    class="relative w-full flex justify-center items-end overflow-hidden h-screen bg-cover bg-[url('./images/back.webp')]"
     id="section_1"
   >
     <div class="absolute inset-0 bg-secondary/80"></div>
