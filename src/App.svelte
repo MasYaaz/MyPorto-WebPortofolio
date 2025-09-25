@@ -66,7 +66,7 @@
     <div
       class={`w-full justify-center absolute top-0 z-50 px-8 md:px-20 xl:px-30 h-10 md:h-16 2xl:h-18 flex`}
     >
-      <div class="w-full justify-between lg:max-w-8xl flex mt-5">
+      <div class="w-full justify-between flex mt-5">
         <!-- Logo -->
         <div class="basis-1/3 flex items-center">
           <img
@@ -83,7 +83,7 @@
             <button
               onclick={() => scrollToSection(item.id)}
               class={`font-primary font-medium text-center mr-4 pb-1 text-[13px] lg:text-[17px] lg:mr-10 w-30 tracking-[1px] hover:cursor-pointer hover:text-light border-b-2 hover:scale-105 transition-transform duration-75 ${$navbarLight ? "text-secondary" : "text-primary"}`}
-              class:border-secondary={$halamanAktif === item.id}
+              class:border-primary={$halamanAktif === item.id}
               class:scale-110={$halamanAktif === item.id}
               class:border-transparent={$halamanAktif !== item.id}
             >
@@ -133,62 +133,64 @@
     </div>
   </div>
   <section
-    class="w-full flex flex-col-reverse lg:flex-row px-6 md:px-10 lg:px-24 xl:px-32 items-center justify-between h-screen relative z-0 overflow-hidden bg-cover bg-[url('./images/back.jpg')]"
+    class="relative w-full flex justify-center items-end overflow-hidden h-screen bg-cover bg-[url('./images/back.jpg')]"
     id="section_1"
   >
     <div class="absolute inset-0 bg-secondary/80"></div>
 
-    <!-- Gambar -->
-    <div
-      bind:this={refs["gambarRef"]}
-      class="relative z-10 h-2/3 lg:h-screen transition-all duration-700 ease-out lg:basis-1/2 transform flex items-end justify-center"
-      class:translate-y-100={!visibleFlags["gambarRef"]}
-      class:opacity-0={!visibleFlags["gambarRef"]}
-      class:translate-y-15={visibleFlags["gambarRef"]}
-      class:opacity-100={visibleFlags["gambarRef"]}
-    >
-      <img
-        src="./images/fullbody.webp"
-        alt="Foto"
-        class="h-full lg:w-9/10 object-contain transition-all duration-200 hover:scale-110"
-      />
-    </div>
-
-    <!-- Teks + Tombol -->
-    <div
-      class="relative h-1/3 2xl:h-screen lg:mt-10 2xl:mt-0 z-10 flex flex-col justify-center items-center text-center md:text-left mt-8 md:mt-10 space-y-4 px-4 sm:px-6 lg:basis-1/2"
-    >
-      <h1
+    <div class="flex lg:mx-20 pt-10 max-w-xl lg:max-w-full h-full justify-center items-end flex-col-reverse lg:flex-row">
+      <!-- Gambar -->
+      <div
         bind:this={refs["gambarRef"]}
-        class="font-primary text-primary text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl uppercase font-bold transition-all duration-700 ease-out transform"
-        class:-translate-y-10={!visibleFlags["gambarRef"]}
+        class="transition-all duration-700 ease-out basis-2/3 transform"
+        class:translate-y-100={!visibleFlags["gambarRef"]}
         class:opacity-0={!visibleFlags["gambarRef"]}
         class:translate-y-15={visibleFlags["gambarRef"]}
         class:opacity-100={visibleFlags["gambarRef"]}
       >
-        Welcome
-      </h1>
-      <h3
-        bind:this={refs["gambarRef"]}
-        class="font-primary font-medium text-base sm:text-lg md:text-xl lg:text-2xl 2xl:text-3xl uppercase tracking-[1.5px] transition-all duration-700 ease-out transform"
-        class:-translate-y-10={!visibleFlags["gambarRef"]}
-        class:opacity-0={!visibleFlags["gambarRef"]}
-        class:translate-y-10={visibleFlags["gambarRef"]}
-        class:opacity-100={visibleFlags["gambarRef"]}
+        <img
+          src="./images/fullbody.webp"
+          alt="Foto"
+          class="w-full lg:max-h-screen transition-all duration-200 hover:scale-110"
+        />
+      </div>
+
+      <!-- Teks + Tombol -->
+      <div
+        class="flex flex-col w-full h-full basis-1/3 justify-center items-center text-center gap-5"
       >
-        to my web
-      </h3>
-      <a
-        href="#section_2"
-        bind:this={refs["gambarRef"]}
-        class="font-primary mt-6 bg-primary hover:bg-brown text-secondary hover:text-light rounded-xl text-sm sm:text-base md:text-lg lg:text-xl py-2 px-5 uppercase shadow transition-all duration-300 ease-out transform"
-        class:-translate-y-10={!visibleFlags["gambarRef"]}
-        class:opacity-0={!visibleFlags["gambarRef"]}
-        class:translate-y-10={visibleFlags["gambarRef"]}
-        class:opacity-100={visibleFlags["gambarRef"]}
-      >
-        About Me
-      </a>
+        <h1
+          bind:this={refs["gambarRef"]}
+          class="font-primary text-primary text-5xl xl:text-8xl uppercase font-bold transition-all duration-700 ease-out transform"
+          class:-translate-y-10={!visibleFlags["gambarRef"]}
+          class:opacity-0={!visibleFlags["gambarRef"]}
+          class:translate-y-15={visibleFlags["gambarRef"]}
+          class:opacity-100={visibleFlags["gambarRef"]}
+        >
+          Welcome
+        </h1>
+        <h3
+          bind:this={refs["gambarRef"]}
+          class="font-primary font-medium text-xl xl:text-4xl uppercase tracking-[1.5px] transition-all duration-700 ease-out transform"
+          class:-translate-y-10={!visibleFlags["gambarRef"]}
+          class:opacity-0={!visibleFlags["gambarRef"]}
+          class:translate-y-10={visibleFlags["gambarRef"]}
+          class:opacity-100={visibleFlags["gambarRef"]}
+        >
+          to my web
+        </h3>
+        <a
+          href="#section_2"
+          bind:this={refs["gambarRef"]}
+          class="font-primary xl:mt-6 bg-primary hover:bg-brown text-secondary hover:text-light rounded-xl text-lg lg:text-2xl py-2 px-5 uppercase shadow transition-transform duration-300 ease-out"
+          class:-translate-y-10={!visibleFlags["gambarRef"]}
+          class:opacity-0={!visibleFlags["gambarRef"]}
+          class:translate-y-10={visibleFlags["gambarRef"]}
+          class:opacity-100={visibleFlags["gambarRef"]}
+        >
+          About Me
+        </a>
+      </div>
     </div>
   </section>
 
