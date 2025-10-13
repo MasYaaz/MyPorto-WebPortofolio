@@ -8,6 +8,8 @@ export function handleScroll() {
   const tinggiViewport = window.innerHeight;
 
   const section = (id: string) => document.getElementById(id)?.offsetTop ?? 0;
+  const topNavbar = document.getElementById("topNavbar");
+  const navbarBottom = topNavbar?.offsetHeight ?? 0;
 
   const posisiAktif =
     posisi >= section("section_4") ||
@@ -20,7 +22,7 @@ export function handleScroll() {
       : "section_1";
 
   halamanAktif.set(posisiAktif);
-  showNavbar.set(posisi >= section("section_2"));
+  showNavbar.set(window.scrollY > navbarBottom);
 
   if (get(menuTerbuka)) {
     menuTerbuka.set(false);

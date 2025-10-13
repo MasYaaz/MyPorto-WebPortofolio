@@ -19,13 +19,13 @@ export const mySkill = [
     logo: faObjectGroup,
     judul: "Desain Grafis",
     deskripsi:
-      "Butuh website buat jualan online, atau website untuk admin kantor? Saya dapat membuatnya dengan menggunakan HTML, CSS dan juga Javascript. Dijamin responsif bisa dibuka di mana saja.",
+      "Desain yang menarik adalah kunci pertama untuk menarik perhatian. Saya dapat membantu menciptakan desain visual profesional untuk brand, media sosial, hingga kebutuhan digital marketing — memadukan estetika dengan pesan yang kuat agar identitas Anda terlihat menonjol.",
   },
   {
     logo: faCameraRetro,
     judul: "Fotografi",
     deskripsi:
-      "Butuh website buat jualan online, atau website untuk admin kantor? Saya dapat membuatnya dengan menggunakan HTML, CSS dan juga Javascript. Dijamin responsif bisa dibuka di mana saja.",
+      "Saya menyediakan layanan fotografi dengan sentuhan artistik yang memadukan teknik pencahayaan dan komposisi terbaik. Cocok untuk dokumentasi event, produk, maupun kebutuhan konten digital yang ingin tampil lebih hidup dan berkelas.",
   },
 ];
 

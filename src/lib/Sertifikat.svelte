@@ -9,6 +9,7 @@
     "./images/sertif1.webp",
     "./images/sertif2.webp",
     "./images/sertif3.webp",
+    "./images/sertif4.webp",
   ];
 
   let currentIndex = 0;

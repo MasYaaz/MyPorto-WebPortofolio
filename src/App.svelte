@@ -64,6 +64,7 @@
   <!-- Section 1 -->
   <div class="absolute w-full flex justify-center">
     <div
+      id="topNavbar"
       class={`w-full justify-center absolute top-0 z-50 px-8 md:px-20 xl:px-30 h-10 md:h-16 2xl:h-18 flex`}
     >
       <div class="w-full justify-between flex mt-5">
@@ -72,6 +73,7 @@
           <img
             src={$navbarLight ? "./dark-theme.svg" : "./light-theme.svg"}
             alt="logo yayasan"
+            fetchpriority="high"
             class="w-18 md:w-26 lg:w-34 md:p-2"
             loading="eager"
           />
@@ -138,7 +140,9 @@
   >
     <div class="absolute inset-0 bg-secondary/80"></div>
 
-    <div class="flex lg:mx-20 pt-10 max-w-xl lg:max-w-full h-full justify-center items-end flex-col-reverse lg:flex-row">
+    <div
+      class="flex lg:mx-20 pt-10 max-w-xl lg:max-w-full h-full justify-center items-end flex-col-reverse lg:flex-row"
+    >
       <!-- Gambar -->
       <div
         bind:this={refs["gambarRef"]}
@@ -150,6 +154,8 @@
       >
         <img
           src="./images/fullbody.webp"
+          loading="eager"
+          fetchpriority="high"
           alt="Foto"
           class="w-full lg:max-h-screen transition-all duration-200 hover:scale-110"
         />
@@ -179,17 +185,17 @@
         >
           to my web
         </h3>
-        <a
-          href="#section_2"
+        <button
+          onclick={() => scrollToSection("section_2")}
           bind:this={refs["gambarRef"]}
-          class="font-primary xl:mt-6 bg-primary hover:bg-brown text-secondary hover:text-light rounded-xl text-lg lg:text-2xl py-2 px-5 uppercase shadow transition-transform duration-300 ease-out"
+          class="font-primary hover:cursor-pointer hover:scale-105 xl:mt-6 bg-primary hover:bg-brown text-secondary hover:text-light rounded-xl text-lg lg:text-2xl py-2 px-5 uppercase shadow transition-transform duration-300 ease-out"
           class:-translate-y-10={!visibleFlags["gambarRef"]}
           class:opacity-0={!visibleFlags["gambarRef"]}
           class:translate-y-10={visibleFlags["gambarRef"]}
           class:opacity-100={visibleFlags["gambarRef"]}
         >
           About Me
-        </a>
+        </button>
       </div>
     </div>
   </section>
@@ -314,13 +320,13 @@
               class="w-full bg-primary p-6 rounded-2xl shadow-xl/60 flex flex-col justify-between flex-1 h-full"
             >
               <p
-                class="font-display text-secondary break-words w-full text-dark2 text-sm md:text-sm lg:text-md xl:text-lg 2xl:text-xl"
+                class="font-display text-secondary break-words w-full h-full text-dark2 text-sm md:text-sm lg:text-md xl:text-md 2xl:text-lg"
               >
                 {S.deskripsi}
               </p>
               <hr class="border-t-3 mt-5 border-secondary" />
               <button
-                class="mt-4 self-center text-dark2 hover:cursor-pointer hover:text-dark hover:scale-105 transition-all duration-300"
+                class="mt-4 self-center hover:cursor-pointer hover:text-dark hover:scale-105 transition-all duration-300"
               >
                 <FontAwesomeIcon icon={faSearch} class="fa-2x text-secondary" />
               </button>
