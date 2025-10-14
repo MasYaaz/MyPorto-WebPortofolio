@@ -54,27 +54,29 @@
           {/if}
         </nav>
 
-        <DarkmodeButton />
-        <!-- Hamburger -->
-        <button
-          class="2xl:hidden"
-          onclick={toggleMenu}
-          aria-label="tombol navbar"
-        >
-          <svg
-            class={`w-6 h-6 ${$isDark ? "text-secondary" : "text-primary"}`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        <div class="h-full flex gap-2">
+          <DarkmodeButton />
+          <!-- Hamburger -->
+          <button
+            class="2xl:hidden"
+            onclick={toggleMenu}
+            aria-label="tombol navbar"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
+            <svg
+              class={`w-6 h-6 ${$isDark ? "text-secondary" : "text-primary"}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
 
         <!-- Mobile Menu -->
         {#if $menuTerbuka}
