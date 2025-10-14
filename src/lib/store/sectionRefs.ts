@@ -24,10 +24,3 @@ export const refs: Record<string, HTMLElement | null> = Object.fromEntries(
 export const visibleFlags: Record<string, boolean> = Object.fromEntries(
   ids.map((id) => [id, false])
 );
-
-export const navItemsBawah = [
-  { id: "section_1", label: "Home" },
-  { id: "section_2", label: "About Me" },
-  { id: "section_3", label: "Skills" },
-  { id: "section_4", label: "Portofolio" },
-];

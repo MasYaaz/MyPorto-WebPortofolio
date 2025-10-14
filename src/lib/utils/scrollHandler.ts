@@ -12,8 +12,10 @@ export function handleScroll() {
   const navbarBottom = topNavbar?.offsetHeight ?? 0;
 
   const posisiAktif =
-    posisi >= section("section_4") ||
-    window.scrollY + tinggiViewport >= tinggiHalaman - 4
+    posisi >= section("section_5") ||
+    window.scrollY + tinggiViewport >= tinggiHalaman - 5
+      ? "section_5"
+      : posisi >= section("section_4")
       ? "section_4"
       : posisi >= section("section_3")
       ? "section_3"

@@ -4,22 +4,15 @@
   import { faGithub } from "@fortawesome/free-brands-svg-icons";
   import { faSearch } from "@fortawesome/free-solid-svg-icons";
   import { onMount, onDestroy } from "svelte";
-  import { slide } from "svelte/transition";
   import DataProfil from "./lib/DataProfil.svelte";
   import Sertifikat from "./lib/Sertifikat.svelte";
-  import { navItems } from "./lib/store/navItems";
   import { refs, ids, visibleFlags } from "./lib/store/sectionRefs";
   import { scrollToSection } from "./lib/utils/scrollTo";
   import { handleScroll } from "./lib/utils/scrollHandler";
   import Navbar from "./lib/component/Navbar.svelte";
-  import {
-    halamanAktif,
-    navbarLight,
-    menuTerbuka,
-    toggleMenu,
-  } from "./lib/store/ui";
   import { mySkill, profilItems } from "./lib/store/array";
   import Footer from "./lib/component/Footer.svelte";
+  import FixedNavbar from "./lib/component/FixedNavbar.svelte";
 
   // Observer
   let observer;
@@ -59,86 +52,14 @@
 </script>
 
 <Navbar />
-
 <main>
+  <FixedNavbar/>
   <!-- Section 1 -->
-  <div class="absolute w-full flex justify-center">
-    <div
-      id="topNavbar"
-      class={`w-full justify-center absolute top-0 z-50 px-8 md:px-20 xl:px-30 h-10 md:h-16 2xl:h-18 flex`}
-    >
-      <div class="w-full justify-between flex mt-5">
-        <!-- Logo -->
-        <div class="basis-1/3 flex items-center">
-          <img
-            src={$navbarLight ? "./dark-theme.svg" : "./light-theme.svg"}
-            alt="logo yayasan"
-            fetchpriority="high"
-            class="w-18 md:w-26 lg:w-34 md:p-2"
-            loading="eager"
-          />
-        </div>
-
-        <!-- Desktop Nav -->
-        <nav class="hidden 2xl:flex basis-2/3 p-2 items-center justify-end">
-          {#each navItems as item}
-            <button
-              onclick={() => scrollToSection(item.id)}
-              class={`font-primary font-medium text-center mr-4 pb-1 text-[13px] lg:text-[17px] lg:mr-10 w-30 tracking-[1px] hover:cursor-pointer hover:text-light border-b-2 hover:scale-105 transition-transform duration-75 ${$navbarLight ? "text-secondary" : "text-primary"}`}
-              class:border-primary={$halamanAktif === item.id}
-              class:scale-110={$halamanAktif === item.id}
-              class:border-transparent={$halamanAktif !== item.id}
-            >
-              {item.label}
-            </button>
-          {/each}
-        </nav>
-
-        <!-- Hamburger -->
-        <button
-          class="2xl:hidden hover:scale-105 transition-transform"
-          onclick={toggleMenu}
-          aria-label="tombol navbar"
-        >
-          <svg
-            class={`w-6 h-6 ${$navbarLight ? "text-secondary" : "text-primary"}`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
-
-        <!-- Mobile Menu -->
-        {#if $menuTerbuka}
-          <nav
-            transition:slide={{ duration: 400 }}
-            class="fixed inset-0 z-40 flex flex-col items-center justify-center bg-primary/50 backdrop-blur-sm 2xl:hidden"
-          >
-            {#each navItems as item}
-              <button
-                onclick={() => scrollToSection(item.id)}
-                class="text-white text-xl font-semibold my-4 border-b w-[80%] p-2 tracking-wide hover:text-secondary transition-colors"
-              >
-                {item.label}
-              </button>
-            {/each}
-          </nav>
-        {/if}
-      </div>
-    </div>
-  </div>
   <section
     class="relative w-full flex justify-center items-end overflow-hidden h-screen bg-cover bg-[url('./images/back.webp')]"
     id="section_1"
   >
-    <div class="absolute inset-0 bg-secondary/80"></div>
+    <div class="absolute inset-0 bg-secondary/80 dark:bg-primary/90"></div>
 
     <div
       class="flex lg:mx-20 pt-10 max-w-xl lg:max-w-full h-full justify-center items-end flex-col-reverse lg:flex-row"
@@ -167,7 +88,7 @@
       >
         <h1
           bind:this={refs["gambarRef"]}
-          class="font-primary text-primary text-5xl xl:text-8xl uppercase font-bold transition-all duration-700 ease-out transform"
+          class="font-primary text-primary dark:text-secondary text-5xl xl:text-8xl uppercase font-bold transition-all duration-700 ease-out transform"
           class:-translate-y-10={!visibleFlags["gambarRef"]}
           class:opacity-0={!visibleFlags["gambarRef"]}
           class:translate-y-15={visibleFlags["gambarRef"]}
@@ -177,7 +98,7 @@
         </h1>
         <h3
           bind:this={refs["gambarRef"]}
-          class="font-primary font-medium text-xl xl:text-4xl uppercase tracking-[1.5px] transition-all duration-700 ease-out transform"
+          class="font-primary dark:text-secondary font-medium text-xl xl:text-4xl uppercase tracking-[1.5px] transition-all duration-700 ease-out transform"
           class:-translate-y-10={!visibleFlags["gambarRef"]}
           class:opacity-0={!visibleFlags["gambarRef"]}
           class:translate-y-10={visibleFlags["gambarRef"]}
@@ -188,7 +109,7 @@
         <button
           onclick={() => scrollToSection("section_2")}
           bind:this={refs["gambarRef"]}
-          class="font-primary hover:cursor-pointer hover:scale-105 xl:mt-6 bg-primary hover:bg-brown text-secondary hover:text-light rounded-xl text-lg lg:text-2xl py-2 px-5 uppercase shadow transition-transform duration-300 ease-out"
+          class="font-primary dark:bg-brown dark:hover:bg-secondary dark:hover:text-primary hover:cursor-pointer hover:scale-105 xl:mt-6 bg-primary hover:bg-brown text-secondary hover:text-light rounded-xl text-lg lg:text-2xl py-2 px-5 uppercase shadow transition-transform duration-300 ease-out"
           class:-translate-y-10={!visibleFlags["gambarRef"]}
           class:opacity-0={!visibleFlags["gambarRef"]}
           class:translate-y-10={visibleFlags["gambarRef"]}
@@ -202,7 +123,7 @@
 
   <!-- Section 2 -->
   <section
-    class="w-full min-h-screen bg-secondary px-6 md:px-10 lg:px-24 xl:px-32 py-16 md:py-20 lg:py-24 flex flex-col xl:flex-row items-center justify-center gap-10 md:gap-16"
+    class="w-full min-h-screen bg-secondary dark:bg-primary px-6 md:px-10 lg:px-24 xl:px-32 py-16 md:py-20 lg:py-24 flex flex-col xl:flex-row items-center justify-center gap-10 md:gap-16"
     id="section_2"
   >
     <div class="lg:max-w-6xl gap-5 flex flex-col md:flex-row">
@@ -275,7 +196,7 @@
 
   <!-- Section 3 -->
   <section
-    class="w-full min-h-screen bg-secondary px-6 md:px-16 lg:px-32 py-16 flex flex-col items-center justify-center gap-8 md:pt-30"
+    class="w-full min-h-screen bg-secondary dark:bg-primary px-6 md:px-16 lg:px-32 py-16 flex flex-col items-center justify-center gap-8 md:pt-30"
     id="section_3"
   >
     <div class="max-w-lg lg:max-w-6xl flex flex-col items-center">
@@ -285,7 +206,7 @@
         class:opacity-0={!visibleFlags["card1Section3R"]}
         class:translate-x-0={visibleFlags["card1Section3R"]}
         class:opacity-100={visibleFlags["card1Section3R"]}
-        class="bg-primary shadow-light shadow-2xl/20 p-2 md:p-5 mb-10 w-60 md:w-70 lg:w-80 xl:w-100 2xl:w-120 text-center rounded-2xl shadow-xl transition-all duration-700 ease-out transform"
+        class="bg-primary dark:bg-brown shadow-light shadow-2xl/20 p-2 md:p-5 mb-10 w-60 md:w-70 lg:w-80 xl:w-100 2xl:w-120 text-center rounded-2xl shadow-xl transition-all duration-700 ease-out transform"
       >
         <h2
           class="font-primary text-secondary text-3xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-extrabold text-light mb-2"
@@ -308,27 +229,27 @@
             <button>
               <FontAwesomeIcon
                 icon={S.logo}
-                class="text-primary fa-5x md:fa-3x md:mb-3 hover:scale-115 transition-transform duration-300"
+                class="text-primary dark:text-secondary fa-5x md:fa-3x md:mb-3 hover:scale-115 transition-transform duration-300"
               />
             </button>
             <h2
-              class="font-primary break-words w-full h-20 text-primary items-center flex justify-center font-bold text-light p-2 text-2xl md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl"
+              class="font-primary break-words w-full h-20 text-primary dark:text-secondary items-center flex justify-center font-bold text-light p-2 text-2xl md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl"
             >
               {S.judul}
             </h2>
             <div
-              class="w-full bg-primary p-6 rounded-2xl shadow-xl/60 flex flex-col justify-between flex-1 h-full"
+              class="w-full bg-primary dark:bg-secondary p-6 rounded-2xl shadow-xl/60 flex flex-col justify-between flex-1 h-full"
             >
               <p
-                class="font-display text-secondary break-words w-full h-full text-dark2 text-sm md:text-sm lg:text-md xl:text-md 2xl:text-lg"
+                class="font-display text-secondary dark:text-primary break-words w-full h-full text-dark2 text-sm md:text-sm lg:text-md xl:text-md 2xl:text-lg"
               >
                 {S.deskripsi}
               </p>
-              <hr class="border-t-3 mt-5 border-secondary" />
+              <hr class="border-t-3 mt-5 border-secondary dark:border-primary" />
               <button
                 class="mt-4 self-center hover:cursor-pointer hover:text-dark hover:scale-105 transition-all duration-300"
               >
-                <FontAwesomeIcon icon={faSearch} class="fa-2x text-secondary" />
+                <FontAwesomeIcon icon={faSearch} class="fa-2x text-secondary dark:text-primary" />
               </button>
             </div>
           </div>
@@ -337,8 +258,8 @@
     </div>
   </section>
 
-  <!-- Section Sertifikat -->
-  <section id="slide-sertifikat" class="py-12 bg-secondary">
+  <!-- Section 4 -->
+  <section id="section_4" class="flex items-center w-full min-h-screen px-6 bg-secondary dark:bg-primary">
     <div
       class="container mx-auto px-4 transition-transform duration-500"
       bind:this={refs["sertifikat"]}
@@ -351,10 +272,10 @@
     </div>
   </section>
 
-  <!-- Section 4 -->
+  <!-- Section 5 -->
   <section
-    class="w-full min-h-screen bg-secondary px-6 md:px-16 lg:px-32 py-20 flex flex-col items-center justify-around gap-8 md:pt-30 z-30"
-    id="section_4"
+    class="w-full min-h-screen bg-secondary dark:bg-primary px-6 md:px-16 lg:px-32 py-20 flex flex-col items-center justify-around gap-8 md:pt-30 z-30"
+    id="section_5"
   >
     <div class="max-w-lg lg:max-w-4xl flex flex-col items-center">
       <div
@@ -390,7 +311,7 @@
           >
             <FontAwesomeIcon
               icon={faGithub}
-              class="text-[160px] lg:text-[220px] hover:scale-115 duration-700"
+              class="text-[160px] dark:text-secondary lg:text-[220px] hover:scale-115 duration-700"
             />
           </a>
         </div>

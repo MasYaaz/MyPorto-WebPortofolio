@@ -1,3 +1,4 @@
+import { faGithub, faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import {
   faCameraAlt,
   faCameraRetro,
@@ -47,3 +48,18 @@ export const profilItems = [
     tulisan: "+62-823-3304-4295",
   },
 ];
+
+export const navItems = [
+  { id: "section_1", label: "Home"},
+  { id: "section_2", label: "About Me"},
+  { id: "section_3", label: "My Skills"},
+  { id: "section_4", label: "Certificate"},
+  { id: "section_5", label: "Portofolio"},
+];
+
+export const socialMedia = [
+  { href : "https://www.instagram.com/mas_yazz22/", aria: "Instagram", icon: faInstagram},
+  { href : "https://www.linkedin.com/in/aflah-mahdi-yazdi-a69414355/", aria: "Linkedin", icon:faLinkedin },
+  { href : "https://github.com/MasYaaz", aria: "Github", icon : faGithub },
+]
+

@@ -2,7 +2,6 @@
   import { onDestroy, onMount } from "svelte";
   import { tweened } from "svelte/motion"; // Import tweened untuk animasi halus
   import { cubicOut } from "svelte/easing";
-  import { visibleFlags } from "./store/sectionRefs";
 
   export let certificateImages = [
     // Pastikan path ke gambar Anda benar di sini atau dari parent component
@@ -72,7 +71,7 @@
 </script>
 
 <h2
-  class="text-3xl lg:text-5xl font-primary font-bold text-center mb-8 text-primary"
+  class="text-3xl lg:text-5xl font-primary font-bold text-center mb-8 text-primary dark:text-secondary"
 >
   Sertifikat Saya
 </h2>
@@ -90,7 +89,7 @@
           <img
             src={imagePath}
             alt={`Sertifikat ${i + 1} dari ${certificateImages.length}`}
-            class="max-w-full max-h-full object-contain bg-white block"
+            class="max-w-full max-h-full object-contain bg-secondary block"
             loading="lazy"
           />
         </div>
@@ -120,7 +119,7 @@
       </div>
 
       <div
-        class="absolute bottom-0 left-0 w-full bg-primary bg-opacity-60 text-secondary text-center py-2 text-sm font-medium z-10"
+        class="absolute bottom-0 left-0 w-full bg-primary bg-opacity-60 text-secondary dark:bg-secondary dark:text-primary text-center py-2 text-sm font-medium z-10"
       >
         {currentIndex + 1} / {certificateImages.length}
       </div>
