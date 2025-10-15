@@ -53,7 +53,7 @@
 
 <Navbar />
 <main>
-  <FixedNavbar/>
+  <FixedNavbar />
   <!-- Section 1 -->
   <section
     class="relative w-full flex justify-center items-end overflow-hidden min-h-screen bg-cover bg-[url('./images/back.webp')]"
@@ -78,6 +78,8 @@
           loading="eager"
           fetchpriority="high"
           alt="Foto"
+          width="400"
+          height="600"
           class="w-full lg:max-h-screen transition-all duration-200 hover:scale-110"
         />
       </div>
@@ -245,11 +247,16 @@
               >
                 {S.deskripsi}
               </p>
-              <hr class="border-t-3 mt-5 border-secondary dark:border-primary" />
+              <hr
+                class="border-t-3 mt-5 border-secondary dark:border-primary"
+              />
               <button
                 class="mt-4 self-center hover:cursor-pointer hover:text-dark hover:scale-105 transition-all duration-300"
               >
-                <FontAwesomeIcon icon={faSearch} class="fa-2x text-secondary dark:text-primary" />
+                <FontAwesomeIcon
+                  icon={faSearch}
+                  class="fa-2x text-secondary dark:text-primary"
+                />
               </button>
             </div>
           </div>
@@ -259,7 +266,10 @@
   </section>
 
   <!-- Section 4 -->
-  <section id="section_4" class="flex items-center w-full min-h-screen px-6 bg-secondary dark:bg-primary">
+  <section
+    id="section_4"
+    class="flex items-center w-full min-h-screen px-6 bg-secondary dark:bg-primary"
+  >
     <div
       class="container mx-auto px-4 transition-transform duration-500"
       bind:this={refs["sertifikat"]}

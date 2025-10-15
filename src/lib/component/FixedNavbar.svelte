@@ -20,7 +20,9 @@
         <div class="basis-1/3 flex items-center">
           <img
             src={logoSrc}
-            alt="logo yayasan"
+            alt="logo"
+            width="100"
+            height="40"
             class="w-18 md:w-26 lg:w-34 md:p-2"
             fetchpriority="high"
             loading="eager"

@@ -91,6 +91,8 @@
             src={imagePath}
             alt={`Sertifikat ${i + 1} dari ${certificateImages.length}`}
             class="max-w-full max-h-full object-contain bg-secondary block"
+            width="1280"
+            height="905"
             loading="lazy"
           />
         </div>
@@ -107,7 +109,7 @@
           disabled={isAnimating}
           aria-label="Previous slide"
         >
-          <ArrowBigLeft size="20"/>
+          <ArrowBigLeft size="20" />
         </button>
         <button
           class="bg-primary bg-opacity-50 hover:bg-opacity-75 text-secondary font-bold py-2 px-2 rounded-full transition-colors duration-200 hover:cursor-pointer hover:ring-2 focus:ring-brown hover:bg-secondary hover:text-primary disabled:opacity-50"
@@ -115,7 +117,7 @@
           disabled={isAnimating}
           aria-label="Next slide"
         >
-          <ArrowBigRight size="20"/>
+          <ArrowBigRight size="20" />
         </button>
       </div>
 
