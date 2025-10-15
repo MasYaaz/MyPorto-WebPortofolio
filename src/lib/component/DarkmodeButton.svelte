@@ -30,7 +30,7 @@
   <button
     onclick={toggleDark}
     aria-label="tombol darkmode"
-    class="hover:cursor-pointer 2xl:mb-1 transition-all duration-300 hover:scale-110 text-primary dark:text-secondary hover:text-red-600"
+    class="hover:cursor-pointer 2xl:mb-1 transition-all duration-300 hover:scale-110 text-primary dark:text-secondary"
   >
     {#if dark}
       <Moon size="23" />

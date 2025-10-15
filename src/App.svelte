@@ -62,12 +62,12 @@
     <div class="absolute inset-0 bg-secondary/80 dark:bg-primary/90"></div>
 
     <div
-      class="flex lg:mx-20 pt-10 max-w-xl lg:max-w-full h-full justify-center items-end flex-col-reverse lg:flex-row"
+      class="flex lg:mx-20 pt-10 max-w-xl lg:max-w-full h-screen justify-center items-end flex-col-reverse lg:flex-row"
     >
       <!-- Gambar -->
       <div
         bind:this={refs["gambarRef"]}
-        class="transition-all duration-700 ease-out basis-2/3 transform"
+        class="transition-all duration-700 ease-out basis-2/3 transform flex items-end"
         class:translate-y-100={!visibleFlags["gambarRef"]}
         class:opacity-0={!visibleFlags["gambarRef"]}
         class:translate-y-15={visibleFlags["gambarRef"]}
@@ -98,7 +98,7 @@
         >
           Welcome
         </h1>
-        <h3
+        <p
           bind:this={refs["textRef"]}
           class="font-primary dark:text-secondary font-medium text-xl xl:text-4xl uppercase tracking-[1.5px] transition-all duration-700 ease-out transform"
           class:-translate-y-10={!visibleFlags["textRef"]}
@@ -107,9 +107,10 @@
           class:opacity-100={visibleFlags["textRef"]}
         >
           to my web
-        </h3>
+        </p>
         <button
           onclick={() => scrollToSection("section_2")}
+          aria-label="Next Button"
           bind:this={refs["textRef"]}
           class="font-primary dark:bg-brown dark:hover:bg-secondary dark:hover:text-primary hover:cursor-pointer hover:scale-105 xl:mt-6 bg-primary hover:bg-brown text-secondary hover:text-light rounded-xl text-lg lg:text-2xl py-2 px-5 uppercase shadow transition-transform duration-300 ease-out"
           class:-translate-y-10={!visibleFlags["textRef"]}
@@ -228,7 +229,7 @@
             class:opacity-100={visibleFlags[`cardSection3_${i}`]}
             class="w-full lg:w-1/3 mb-6 flex flex-col items-center text-center transition-all duration-700 ease-out transform"
           >
-            <button>
+            <button aria-label="skill logo">
               <FontAwesomeIcon
                 icon={S.logo}
                 class="text-primary dark:text-secondary fa-5x md:fa-3x md:mb-3 hover:scale-115 transition-transform duration-300"
@@ -251,6 +252,7 @@
                 class="border-t-3 mt-5 border-secondary dark:border-primary"
               />
               <button
+                aria-label="search button"
                 class="mt-4 self-center hover:cursor-pointer hover:text-dark hover:scale-105 transition-all duration-300"
               >
                 <FontAwesomeIcon
