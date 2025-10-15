@@ -2,6 +2,7 @@
   import { onDestroy, onMount } from "svelte";
   import { tweened } from "svelte/motion"; // Import tweened untuk animasi halus
   import { cubicOut } from "svelte/easing";
+  import { ArrowBigLeft, ArrowBigRight } from "lucide-svelte";
 
   export let certificateImages = [
     // Pastikan path ke gambar Anda benar di sini atau dari parent component
@@ -101,20 +102,20 @@
         class="absolute top-1/2 transform -translate-y-1/2 w-full flex justify-between items-center px-4 z-10"
       >
         <button
-          class="bg-primary bg-opacity-50 hover:bg-opacity-75 text-secondary font-bold py-2 px-3 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+          class="bg-primary bg-opacity-50 hover:bg-opacity-75 text-secondary font-bold py-2 px-2 rounded-full transition-colors duration-200 hover:cursor-pointer hover:ring-2 focus:ring-brown hover:bg-secondary hover:text-primary disabled:opacity-50"
           on:click={prevSlide}
           disabled={isAnimating}
           aria-label="Previous slide"
         >
-          &larr;
+          <ArrowBigLeft size="20"/>
         </button>
         <button
-          class="bg-primary bg-opacity-50 hover:bg-opacity-75 text-secondary font-bold py-2 px-3 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+          class="bg-primary bg-opacity-50 hover:bg-opacity-75 text-secondary font-bold py-2 px-2 rounded-full transition-colors duration-200 hover:cursor-pointer hover:ring-2 focus:ring-brown hover:bg-secondary hover:text-primary disabled:opacity-50"
           on:click={nextSlide}
           disabled={isAnimating}
           aria-label="Next slide"
         >
-          &rarr;
+          <ArrowBigRight size="20"/>
         </button>
       </div>
 

@@ -2,7 +2,6 @@
   import { fade, slide } from "svelte/transition";
   import {
     showNavbar,
-    navbarLight,
     toggleMenu,
     menuTerbuka,
     scrollToSection,
@@ -11,6 +10,8 @@
   import DarkmodeButton from "./DarkmodeButton.svelte";
   import { isDark } from "../store/darkMode";
   import { navItems } from "../store/array";
+
+  $: logoSrc = $isDark ? "./light-theme.svg" : "./dark-theme.svg";
 </script>
 
 <header class="flex justify-center w-full">
@@ -23,7 +24,7 @@
         <!-- Logo -->
         <div class="basis-1/3 flex items-center">
           <img
-            src={$isDark ? "./light-theme.svg" : "./dark-theme.svg"}
+            src={logoSrc}
             alt="logo yayasan"
             class="w-18 md:w-26 lg:w-34 md:p-2"
             loading="eager"
@@ -40,6 +41,7 @@
                 class:border-secondary={$halamanAktif === item.id}
                 class:scale-110={$halamanAktif === item.id}
                 class:border-transparent={$halamanAktif !== item.id}
+                aria-label={item.aria}
               >
                 {item.label}
               </button>
@@ -53,6 +55,7 @@
                 class:border-primary={$halamanAktif === item.id}
                 class:scale-110={$halamanAktif === item.id}
                 class:border-transparent={$halamanAktif !== item.id}
+                aria-label={item.aria}
               >
                 {item.label}
               </button>
@@ -93,6 +96,7 @@
             {#each navItems as item}
               <button
                 onclick={() => scrollToSection(item.id)}
+                aria-label={item.aria}
                 class="text-white text-xl font-semibold my-4 border-b w-[80%] p-2 tracking-wide hover:text-secondary transition-colors"
               >
                 {item.label}

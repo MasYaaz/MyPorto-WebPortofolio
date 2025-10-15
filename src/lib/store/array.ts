@@ -50,11 +50,11 @@ export const profilItems = [
 ];
 
 export const navItems = [
-  { id: "section_1", label: "Home"},
-  { id: "section_2", label: "About Me"},
-  { id: "section_3", label: "My Skills"},
-  { id: "section_4", label: "Certificate"},
-  { id: "section_5", label: "Portofolio"},
+  { id: "section_1", label: "Home", aria: "Home"},
+  { id: "section_2", label: "About Me", aria: "About Me"},
+  { id: "section_3", label: "My Skills", aria: "About Me"},
+  { id: "section_4", label: "Certificate", aria: "About Me"},
+  { id: "section_5", label: "Portofolio", aria: "About Me"},
 ];
 
 export const socialMedia = [

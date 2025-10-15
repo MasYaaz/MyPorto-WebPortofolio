@@ -56,7 +56,7 @@
   <FixedNavbar/>
   <!-- Section 1 -->
   <section
-    class="relative w-full flex justify-center items-end overflow-hidden h-screen bg-cover bg-[url('./images/back.webp')]"
+    class="relative w-full flex justify-center items-end overflow-hidden min-h-screen bg-cover bg-[url('./images/back.webp')]"
     id="section_1"
   >
     <div class="absolute inset-0 bg-secondary/80 dark:bg-primary/90"></div>
@@ -84,36 +84,36 @@
 
       <!-- Teks + Tombol -->
       <div
-        class="flex flex-col w-full h-full basis-1/3 justify-center items-center text-center gap-5"
+        class="flex flex-col w-full h-screen basis-1/3 justify-center items-center text-center gap-5"
       >
         <h1
-          bind:this={refs["gambarRef"]}
+          bind:this={refs["textRef"]}
           class="font-primary text-primary dark:text-secondary text-5xl xl:text-8xl uppercase font-bold transition-all duration-700 ease-out transform"
-          class:-translate-y-10={!visibleFlags["gambarRef"]}
-          class:opacity-0={!visibleFlags["gambarRef"]}
-          class:translate-y-15={visibleFlags["gambarRef"]}
-          class:opacity-100={visibleFlags["gambarRef"]}
+          class:-translate-y-10={!visibleFlags["textRef"]}
+          class:opacity-0={!visibleFlags["textRef"]}
+          class:translate-y-15={visibleFlags["textRef"]}
+          class:opacity-100={visibleFlags["textRef"]}
         >
           Welcome
         </h1>
         <h3
-          bind:this={refs["gambarRef"]}
+          bind:this={refs["textRef"]}
           class="font-primary dark:text-secondary font-medium text-xl xl:text-4xl uppercase tracking-[1.5px] transition-all duration-700 ease-out transform"
-          class:-translate-y-10={!visibleFlags["gambarRef"]}
-          class:opacity-0={!visibleFlags["gambarRef"]}
-          class:translate-y-10={visibleFlags["gambarRef"]}
-          class:opacity-100={visibleFlags["gambarRef"]}
+          class:-translate-y-10={!visibleFlags["textRef"]}
+          class:opacity-0={!visibleFlags["textRef"]}
+          class:translate-y-10={visibleFlags["textRef"]}
+          class:opacity-100={visibleFlags["textRef"]}
         >
           to my web
         </h3>
         <button
           onclick={() => scrollToSection("section_2")}
-          bind:this={refs["gambarRef"]}
+          bind:this={refs["textRef"]}
           class="font-primary dark:bg-brown dark:hover:bg-secondary dark:hover:text-primary hover:cursor-pointer hover:scale-105 xl:mt-6 bg-primary hover:bg-brown text-secondary hover:text-light rounded-xl text-lg lg:text-2xl py-2 px-5 uppercase shadow transition-transform duration-300 ease-out"
-          class:-translate-y-10={!visibleFlags["gambarRef"]}
-          class:opacity-0={!visibleFlags["gambarRef"]}
-          class:translate-y-10={visibleFlags["gambarRef"]}
-          class:opacity-100={visibleFlags["gambarRef"]}
+          class:-translate-y-10={!visibleFlags["textRef"]}
+          class:opacity-0={!visibleFlags["textRef"]}
+          class:translate-y-10={visibleFlags["textRef"]}
+          class:opacity-100={visibleFlags["textRef"]}
         >
           About Me
         </button>

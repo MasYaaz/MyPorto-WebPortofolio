@@ -2,6 +2,7 @@ import { mySkill } from "./array";
 
 export const ids = [
   "gambarRef",
+  "textRef",
   "aboutRef",
   "card1Section2R",
   "card2Section2R",

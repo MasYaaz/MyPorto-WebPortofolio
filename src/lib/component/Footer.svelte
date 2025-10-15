@@ -1,13 +1,9 @@
 <script>
-  import {
-    faGithub,
-    faInstagram,
-    faLinkedin,
-  } from "@fortawesome/free-brands-svg-icons";
   import { scrollToSection } from "../utils/scrollTo";
   import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
   import { isDark } from "../store/darkMode";
   import { navItems, socialMedia } from "../store/array";
+  $: logoSrc = $isDark ? './dark-theme.svg' : './light-theme.svg';
 </script>
 
 <footer class="relative w-full text-dark2 font-primary overflow-hidden">
@@ -26,7 +22,7 @@
       <!-- Kolom 1: Brand/Deskripsi -->
       <div>
         <img
-          src={$isDark ? "./dark-theme.svg" : "./light-theme.svg"}
+          src={logoSrc}
           alt="logo"
           class="-mb-5 -mt-10 w-30 h-auto"
           loading="lazy"
@@ -72,7 +68,7 @@
 
     <!-- Garis dan copyright -->
     <div class="max-w-7xl mx-auto flex flex-col">
-      <hr class="my-6 border-primary border-[0.5px]" />
+      <hr class="my-6 border-primary dark:border-secondary border-[0.5px]" />
       <p class="text-center text-sm text-dark2">
         &copy; 2025 MyPorto - Web Portofolio . All rights reserved.
       </p>

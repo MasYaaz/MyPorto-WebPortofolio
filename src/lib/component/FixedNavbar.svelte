@@ -6,10 +6,12 @@
   import DarkmodeButton from "./DarkmodeButton.svelte";
   import { slide } from "svelte/transition";
   import { navItems } from "../store/array";
+
+  $: logoSrc = $isDark ? "./dark-theme.svg" : "./light-theme.svg";
 </script>
 
 {#if !$showNavbar}
-  <header class="absolute flex justify-center w-full">
+  <div class="absolute flex justify-center w-full">
     <div
       class={`w-[92%] md:w-[95%] transition-all ease-in duration-200 rounded-bl-xl rounded-tr-xl rounded-md justify-center mt-2 top-0 z-10 px-8 md:px-20 xl:px-30 h-12 md:h-16 2xl:h-18 flex`}
     >
@@ -17,9 +19,10 @@
         <!-- Logo -->
         <div class="basis-1/3 flex items-center">
           <img
-            src={$isDark ? "./dark-theme.svg" : "./light-theme.svg"}
+            src={logoSrc}
             alt="logo yayasan"
             class="w-18 md:w-26 lg:w-34 md:p-2"
+            fetchpriority="high"
             loading="eager"
           />
         </div>
@@ -30,6 +33,7 @@
             {#each navItems as item}
               <button
                 onclick={() => scrollToSection(item.id)}
+                aria-label={item.aria}
                 class="text-primary dark:text-secondary font-display text-center mr-4 pb-1 text-[13px] md:text-[15px] lg:mr-10 w-25 tracking-[1px] hover:cursor-pointer hover:text-light border-b-2 hover:scale-105 transition-transform duration-75"
                 class:border-primary={$halamanAktif === item.id}
                 class:scale-110={$halamanAktif === item.id}
@@ -43,6 +47,7 @@
             {#each navItems as item}
               <button
                 onclick={() => scrollToSection(item.id)}
+                aria-label={item.aria}
                 class="text-primary dark:text-secondary font-display text-center mr-4 pb-1 text-[13px] md:text-[15px] lg:mr-10 w-25 tracking-[1px] hover:cursor-pointer hover:text-light border-b-2 hover:scale-105 transition-transform duration-75"
                 class:border-secondary={$halamanAktif === item.id}
                 class:scale-110={$halamanAktif === item.id}
@@ -87,6 +92,7 @@
             {#each navItems as item}
               <button
                 onclick={() => scrollToSection(item.id)}
+                aria-label={item.aria}
                 class="text-white text-xl font-semibold my-4 border-b w-[80%] p-2 tracking-wide hover:text-secondary transition-colors"
               >
                 {item.label}
@@ -96,5 +102,5 @@
         {/if}
       </div>
     </div>
-  </header>
+  </div>
 {/if}
