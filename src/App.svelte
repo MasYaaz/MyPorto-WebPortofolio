@@ -67,8 +67,8 @@
       <!-- Gambar -->
       <div
         bind:this={refs["gambarRef"]}
-        class="transition-all duration-700 ease-out basis-2/3 transform flex items-end"
-        class:translate-y-100={!visibleFlags["gambarRef"]}
+        class="transition-all sm:mb-10 duration-700 ease-out basis-2/3 transform flex items-end"
+        class:translate-y-50={!visibleFlags["gambarRef"]}
         class:opacity-0={!visibleFlags["gambarRef"]}
         class:translate-y-15={visibleFlags["gambarRef"]}
         class:opacity-100={visibleFlags["gambarRef"]}
