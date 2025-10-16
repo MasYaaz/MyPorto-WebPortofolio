@@ -6,14 +6,14 @@
   $: logoSrc = $isDark ? './dark-theme.svg' : './light-theme.svg';
 </script>
 
-<footer class="relative w-full text-dark2 font-primary overflow-hidden">
+<footer class="relative w-full font-primary overflow-hidden pt-20">
   <!-- Background Image -->
   <div
     class="absolute inset-0 bg-[url('./images/back.webp')] bg-cover bg-center"
   ></div>
 
   <!-- Overlay Transparan -->
-  <div class="absolute inset-0 bg-secondary/80 dark:bg-primary/90"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-secondary/60 via-secondary/80 to-secondary/100 dark:from-primary/90 dark:via-primary/95 dark:to-primary/100"></div>
   <!-- Ubah ke bg-black/60 jika mau gelap -->
 
   <!-- Konten Footer -->

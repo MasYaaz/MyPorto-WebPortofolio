@@ -59,10 +59,11 @@
     class="relative w-full flex justify-center overflow-hidden min-h-screen bg-cover bg-[url('./images/back.webp')]"
     id="section_1"
   >
-    <div class="absolute inset-0 bg-secondary/80 dark:bg-primary/90"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-secondary/60 to-secondary/100 dark:from-primary/90 dark:to-primary/100"></div>
 
     <div
       class="flex lg:mx-20 pt-10 max-w-xl min-h-screen lg:max-w-full justify-center items-end flex-col-reverse lg:flex-row"
+      style="min-height:100vh;"
     >
       <!-- Gambar -->
       <div
