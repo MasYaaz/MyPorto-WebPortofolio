@@ -13,9 +13,9 @@
 {#if !$showNavbar}
   <div class="absolute flex justify-center w-full">
     <div
-      class={`w-[92%] md:w-[95%] transition-all ease-in duration-200 rounded-bl-xl rounded-tr-xl rounded-md justify-center mt-2 top-0 z-10 px-8 md:px-20 xl:px-30 h-12 md:h-16 2xl:h-18 flex`}
+      class={`w-[92%] md:w-[95%] transition-all ease-in duration-200 rounded-bl-xl rounded-tr-xl rounded-md justify-center mt-2 top-0 z-10 px-8 md:px-20 h-12 md:h-16 2xl:h-20 flex`}
     >
-      <div class="w-full justify-between lg:max-w-8xl flex">
+      <div class="w-full justify-between flex">
         <!-- Logo -->
         <div class="basis-1/3 flex items-center">
           <img

@@ -62,12 +62,12 @@
     <div class="absolute inset-0 bg-secondary/80 dark:bg-primary/90"></div>
 
     <div
-      class="flex lg:mx-20 pt-10 max-w-xl lg:max-w-full h-screen justify-center items-end flex-col-reverse lg:flex-row"
+      class="flex lg:mx-20 pt-10 max-w-xl min-h-screen lg:max-w-full justify-center items-end flex-col-reverse lg:flex-row"
     >
       <!-- Gambar -->
       <div
         bind:this={refs["gambarRef"]}
-        class="transition-all sm:mb-10 duration-700 ease-out basis-2/3 transform flex items-end"
+        class="transition-all sm:translate-y-5 duration-700 ease-out basis-2/3 transform flex items-end"
         class:translate-y-50={!visibleFlags["gambarRef"]}
         class:opacity-0={!visibleFlags["gambarRef"]}
         class:translate-y-15={visibleFlags["gambarRef"]}
@@ -296,10 +296,10 @@
         class:opacity-0={!visibleFlags["card1Section4R"]}
         class:translate-x-0={visibleFlags["card1Section4R"]}
         class:opacity-100={visibleFlags["card1Section4R"]}
-        class="bg-brown shadow-light shadow-2xl/20 p-5 md:p-7 mb-10 w-80 md:w-100 lg:w-120 xl:w-140 2xl:w-160 text-center rounded-2xl shadow-xl transition-all duration-700 ease-out transform"
+        class="bg-brown shadow-light shadow-2xl/20 p-5 md:p-7 mb-10 w-content text-center rounded-2xl shadow-xl transition-all duration-700 ease-out transform"
       >
         <h2
-          class="font-primary text-secondary text-3xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-black text-light mb-2"
+          class="font-primary text-secondary text-2xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-black text-light mb-2"
         >
           Link Portofolio Saya
         </h2>
