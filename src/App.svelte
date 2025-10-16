@@ -56,7 +56,7 @@
   <FixedNavbar />
   <!-- Section 1 -->
   <section
-    class="relative w-full flex justify-center items-end overflow-hidden min-h-screen bg-cover bg-[url('./images/back.webp')]"
+    class="relative w-full flex justify-center overflow-hidden min-h-screen bg-cover bg-[url('./images/back.webp')]"
     id="section_1"
   >
     <div class="absolute inset-0 bg-secondary/80 dark:bg-primary/90"></div>
@@ -67,7 +67,7 @@
       <!-- Gambar -->
       <div
         bind:this={refs["gambarRef"]}
-        class="transition-all sm:translate-y-5 duration-700 ease-out basis-2/3 transform flex items-end"
+        class="transition-all duration-700 ease-out basis-2/3 transform flex items-end"
         class:translate-y-50={!visibleFlags["gambarRef"]}
         class:opacity-0={!visibleFlags["gambarRef"]}
         class:translate-y-15={visibleFlags["gambarRef"]}
@@ -78,9 +78,9 @@
           loading="eager"
           fetchpriority="high"
           alt="Foto"
-          width="400"
-          height="600"
-          class="w-full lg:max-h-screen transition-all duration-200 hover:scale-110"
+          width="685"
+          height="808"
+          class="w-full lg:max-h-screen -translate-y-10 transition-all duration-200 hover:scale-110"
         />
       </div>
 
