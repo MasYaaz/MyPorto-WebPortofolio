@@ -26,8 +26,8 @@
           <img
             src={logoSrc}
             alt="logo"
-            width="100"
-            height="40"
+            width="187"
+            height="187"
             class="w-18 md:w-26 lg:w-34 md:p-2"
             loading="eager"
           />

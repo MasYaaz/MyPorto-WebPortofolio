@@ -63,7 +63,6 @@
 
     <div
       class="flex lg:mx-20 pt-10 max-w-xl min-h-screen lg:max-w-full justify-center items-end flex-col-reverse lg:flex-row"
-      style="min-height:100vh;"
     >
       <!-- Gambar -->
       <div
@@ -81,7 +80,7 @@
           alt="Foto"
           width="685"
           height="808"
-          class="w-full lg:max-h-screen -translate-y-10 transition-all duration-200 hover:scale-110"
+          class="w-full lg:h-screen -translate-y-10 transition-all duration-200 hover:scale-110"
         />
       </div>
 
