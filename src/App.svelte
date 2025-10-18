@@ -56,13 +56,13 @@
   <FixedNavbar />
   <!-- Section 1 -->
   <section
-    class="relative w-full flex justify-center overflow-hidden min-h-screen bg-cover bg-[url('./images/back.webp')]"
+    class="relative w-full flex justify-center overflow-hidden min-h-screen xl:max-h-screen bg-cover bg-[url('./images/back.webp')]"
     id="section_1"
   >
     <div class="absolute inset-0 bg-gradient-to-b from-secondary/60 to-secondary/100 dark:from-primary/90 dark:to-primary/100"></div>
 
     <div
-      class="flex lg:mx-20 pt-10 max-w-xl min-h-screen xl:max-w-full justify-center items-end flex-col-reverse xl:flex-row"
+      class="flex lg:mx-20 pt-10 max-w-xl min-h-screen xl:max-w-7xl justify-center items-end flex-col-reverse xl:flex-row"
     >
       <!-- Gambar -->
       <div
@@ -80,7 +80,7 @@
           alt="Foto"
           width="685"
           height="808"
-          class="w-full -translate-y-10 transition-all duration-200 hover:scale-110"
+          class="w-full h-auto -translate-y-10 transition-all duration-200 hover:scale-110"
         />
       </div>
 
