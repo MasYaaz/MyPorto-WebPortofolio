@@ -59,7 +59,9 @@
     class="relative w-full flex justify-center overflow-hidden min-h-screen xl:max-h-screen bg-cover bg-[url('./images/back.webp')]"
     id="section_1"
   >
-    <div class="absolute inset-0 bg-gradient-to-b from-secondary/60 to-secondary/100 dark:from-primary/90 dark:to-primary/100"></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-secondary/60 to-secondary/100 dark:from-primary/90 dark:to-primary/100"
+    ></div>
 
     <div
       class="flex lg:mx-20 pt-10 max-w-xl min-h-screen xl:h-screen xl:max-w-7xl justify-center items-end flex-col-reverse xl:flex-row"
@@ -67,7 +69,7 @@
       <!-- Gambar -->
       <div
         bind:this={refs["gambarRef"]}
-        class="transition-all duration-700 ease-out basis-2/3 transform flex items-end"
+        class="transition-all duration-700 ease-out basis-2/3 transform flex items-end aspect-[685/808]"
         class:translate-y-50={!visibleFlags["gambarRef"]}
         class:opacity-0={!visibleFlags["gambarRef"]}
         class:translate-y-15={visibleFlags["gambarRef"]}
@@ -80,7 +82,7 @@
           alt="Foto"
           width="685"
           height="808"
-          class="w-full h-auto -translate-y-10 transition-all duration-200 hover:scale-110"
+          class="w-full h-auto -translate-y-10 transition-transform duration-200 hover:scale-110"
         />
       </div>
 
@@ -90,7 +92,7 @@
       >
         <h1
           bind:this={refs["textRef"]}
-          class="font-primary text-primary dark:text-secondary text-5xl xl:text-8xl uppercase font-bold transition-all duration-700 ease-out transform"
+          class="font-primary text-primary dark:text-secondary text-5xl xl:text-8xl uppercase font-bold transition-transform duration-700 ease-out transform"
           class:-translate-y-10={!visibleFlags["textRef"]}
           class:opacity-0={!visibleFlags["textRef"]}
           class:translate-y-15={visibleFlags["textRef"]}
@@ -100,7 +102,7 @@
         </h1>
         <p
           bind:this={refs["textRef"]}
-          class="font-primary dark:text-secondary font-medium text-xl xl:text-4xl uppercase tracking-[1.5px] transition-all duration-700 ease-out transform"
+          class="font-primary dark:text-secondary font-medium text-xl xl:text-4xl uppercase tracking-[1.5px] transition-transform duration-700 ease-out transform"
           class:-translate-y-10={!visibleFlags["textRef"]}
           class:opacity-0={!visibleFlags["textRef"]}
           class:translate-y-10={visibleFlags["textRef"]}
