@@ -82,7 +82,7 @@
           alt="Foto"
           width="685"
           height="808"
-          class="w-full h-auto -translate-y-10 transition-transform duration-200 hover:scale-110"
+          class="absolute inset-0 w-full h-full object-cover -translate-y-10 transition-transform duration-200 hover:scale-110"
         />
       </div>
 
