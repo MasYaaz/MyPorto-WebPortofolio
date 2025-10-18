@@ -62,7 +62,7 @@
     <div class="absolute inset-0 bg-gradient-to-b from-secondary/60 to-secondary/100 dark:from-primary/90 dark:to-primary/100"></div>
 
     <div
-      class="flex lg:mx-20 pt-10 max-w-xl min-h-screen xl:max-w-7xl justify-center items-end flex-col-reverse xl:flex-row"
+      class="flex lg:mx-20 pt-10 max-w-xl min-h-screen xl:h-screen xl:max-w-7xl justify-center items-end flex-col-reverse xl:flex-row"
     >
       <!-- Gambar -->
       <div
@@ -86,7 +86,7 @@
 
       <!-- Teks + Tombol -->
       <div
-        class="flex flex-col w-full h-screen basis-1/3 justify-center items-center text-center gap-5"
+        class="flex flex-col w-full lg:h-screen basis-1/3 justify-center items-center text-center gap-5"
       >
         <h1
           bind:this={refs["textRef"]}
